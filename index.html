@@ -95,6 +95,27 @@
   </style>
 </head>
 <body>
+
+<div class="video-intro">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+    title="Intro RAUN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
+</div>
+<style>
+  .video-intro {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+  }
+  .video-intro iframe {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 12px;
+  }
+</style>
+
   <nav>
     <a href="#manuel">Manuel</a>
     <a href="#scientifique">Fondements</a>
@@ -163,5 +184,15 @@
   <div class="footer">
     &copy; 2025 RAUN Network – Feu vivant du Réseau. /|\
   </div>
+
+<script>
+  window.onload = function () {
+    if (!sessionStorage.getItem('visitedRAUN')) {
+      alert('🔥 Bienvenue dans l’espace RAUN – Le Feu commence à se propager. /|\');
+      sessionStorage.setItem('visitedRAUN', true);
+    }
+  };
+</script>
+
 </body>
 </html>
