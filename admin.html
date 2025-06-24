@@ -1,39 +1,110 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>RAUN Admin</title>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAUN - Admin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      padding: 2rem;
+      text-align: center;
+    }
+    form {
+      display: none;
+      margin-top: 2rem;
+      background: #1e1e1e;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    input, textarea {
+      width: 90%;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #ff4a00;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #login {
+      margin-bottom: 2rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Logs d'accès RAUN</h1>
-  <ul id="logs"></ul>
-  <script>
-    
-const firebaseConfig = {
-  apiKey: "AIzaSyD0R0IFgjCk3gWgVxK3-WnfLubhAqsKbOM",
-  authDomain: "raun-network.firebaseapp.com",
-  projectId: "raun-network",
-  storageBucket: "raun-network.firebasestorage.app",
-  messagingSenderId: "541416001018",
-  appId: "1:541416001018:web:df564a55255d4615206843",
-  measurementId: "G-LVV48NKDF8"
-};
+  <h1>RAUN - Interface Admin</h1>
+  <div id="login">
+    <p>Mot de passe admin requis :</p>
+    <input type="password" id="passwordInput" placeholder="Mot de passe">
+    <button onclick="checkPassword()">Entrer</button>
+    <p id="loginMsg" style="color:red;"></p>
+  </div>
 
-    const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-    db.collection("accessLogs").orderBy("time", "desc").onSnapshot(snapshot => {
-      const logs = document.getElementById("logs");
-      logs.innerHTML = "";
-      snapshot.forEach(doc => {
-        const data = doc.data();
-        const li = document.createElement("li");
-        li.textContent = data.time.toDate() + " - Code: " + data.code;
-        logs.appendChild(li);
-      });
-    });
+  <form id="adminForm">
+    <h2>Ajouter une Capsule RAUN</h2>
+    <input type="text" id="titre" placeholder="Titre" required><br>
+    <textarea id="rappel" placeholder="Rappel" rows="3" required></textarea><br>
+    <textarea id="alignement" placeholder="Alignement" rows="3" required></textarea><br>
+    <textarea id="projection" placeholder="Projection" rows="3" required></textarea><br>
+    <button type="button" onclick="submitCapsule()">Enregistrer</button>
+    <p id="formMsg"></p>
+  </form>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD0R0IFgjCk3gWgVxK3-WnfLubhAqsKbOM",
+      authDomain: "raun-network.firebaseapp.com",
+      projectId: "raun-network",
+      storageBucket: "raun-network.appspot.com",
+      messagingSenderId: "541416001018",
+      appId: "1:541416001018:web:df564a55255d4615206843"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.submitCapsule = async function () {
+      const titre = document.getElementById('titre').value;
+      const rappel = document.getElementById('rappel').value;
+      const alignement = document.getElementById('alignement').value;
+      const projection = document.getElementById('projection').value;
+
+      try {
+        await addDoc(collection(db, "capsules"), {
+          titre, rappel, alignement, projection
+        });
+        document.getElementById('formMsg').innerText = "✅ Capsule enregistrée !";
+      } catch (e) {
+        document.getElementById('formMsg').innerText = "Erreur : " + e;
+      }
+    }
+
+    window.checkPassword = function () {
+      const pass = document.getElementById('passwordInput').value;
+      if (pass === "raunaccess2025") {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('adminForm').style.display = 'block';
+      } else {
+        document.getElementById('loginMsg').innerText = "Mot de passe incorrect";
+      }
+    }
   </script>
 </body>
 </html>
