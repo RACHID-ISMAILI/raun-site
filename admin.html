@@ -1,71 +1,39 @@
 
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>RAUN Admin Dashboard</title>
-  <style>
-    body {
-      background: #0f0f0f;
-      color: #f5f5f5;
-      font-family: monospace;
-      padding: 2rem;
-    }
-    h1 {
-      color: #ff4a00;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 2rem;
-    }
-    th, td {
-      border: 1px solid #333;
-      padding: 0.75rem;
-      text-align: left;
-    }
-    th {
-      background-color: #1a1a1a;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+  <title>RAUN Admin</title>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
 </head>
 <body>
-  <h1>🔥 RAUN Admin Dashboard</h1>
-  <p>Suivi des accès à la page secrète</p>
-  <table id="logTable" class="hidden">
-    <thead>
-      <tr>
-        <th>Date/Heure</th>
-        <th>Code utilisé</th>
-        <th>User Agent</th>
-      </tr>
-    </thead>
-    <tbody id="logBody">
-    </tbody>
-  </table>
-
+  <h1>Logs d'accès RAUN</h1>
+  <ul id="logs"></ul>
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('access') === 'feuVivantRAUN') {
-      document.getElementById('logTable').classList.remove('hidden');
+    
+const firebaseConfig = {
+  apiKey: "AIzaSyD0R0IFgjCk3gWgVxK3-WnfLubhAqsKbOM",
+  authDomain: "raun-network.firebaseapp.com",
+  projectId: "raun-network",
+  storageBucket: "raun-network.firebasestorage.app",
+  messagingSenderId: "541416001018",
+  appId: "1:541416001018:web:df564a55255d4615206843",
+  measurementId: "G-LVV48NKDF8"
+};
 
-      // Fake data to simulate access logs
-      const logs = [
-        { time: '2025-06-23T10:45:00Z', code: '∆RAUN_ACCESS', ua: 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_5)' },
-        { time: '2025-06-23T11:10:00Z', code: 'none', ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' }
-      ];
-
-      const tbody = document.getElementById('logBody');
-      logs.forEach(log => {
-        const row = `<tr><td>${log.time}</td><td>${log.code}</td><td>${log.ua}</td></tr>`;
-        tbody.innerHTML += row;
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    db.collection("accessLogs").orderBy("time", "desc").onSnapshot(snapshot => {
+      const logs = document.getElementById("logs");
+      logs.innerHTML = "";
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const li = document.createElement("li");
+        li.textContent = data.time.toDate() + " - Code: " + data.code;
+        logs.appendChild(li);
       });
-    } else {
-      document.body.innerHTML = '<h1>🔐 Accès refusé</h1><p>Code manquant ou invalide.</p>';
-    }
+    });
   </script>
 </body>
 </html>
