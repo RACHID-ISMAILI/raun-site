@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capsules RAUN</title>
+  <style>
+    body {
+      background: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+    .capsule {
+      background: #222;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px #ff4a00;
+    }
+    h2 {
+      color: #ff4a00;
+    }
+  </style>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+</head>
+<body>
+  <h1>Capsules RAUN</h1>
+  <div id="capsules-container">Chargement...</div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD0R0IFgjCk3gWgVxK3-WnfLubhAqsKbOM",
+      authDomain: "raun-network.firebaseapp.com",
+      projectId: "raun-network",
+      storageBucket: "raun-network.appspot.com",
+      messagingSenderId: "541416001018",
+      appId: "1:541416001018:web:df564a55255d4615206843",
+      measurementId: "G-LVV48NKDF8"
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const container = document.getElementById('capsules-container');
+    container.innerHTML = "Chargement...";
+
+    db.collection("capsules").get().then((querySnapshot) => {
+      container.innerHTML = '';
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const html = `
+          <div class="capsule">
+            <h2>${data.titre}</h2>
+            <p><strong>Rappel :</strong> ${data.rappel}</p>
+            <p><strong>Alignement :</strong> ${data.alignement}</p>
+            <p><strong>Projection :</strong> ${data.projection}</p>
+          </div>
+        `;
+        container.innerHTML += html;
+      });
+    }).catch((error) => {
+      container.innerHTML = "Erreur de chargement : " + error;
+    });
+  </script>
+</body>
+</html>
