@@ -76,6 +76,13 @@
     📱 Partager sur WhatsApp
   </a>
 </div>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/firebase-messaging-sw-v2.js')
+      .then(reg => console.log('SW enregistré ✅', reg))
+      .catch(err => console.error('Erreur SW ❌', err));
+  }
+</script>
 
 </body>
 </html>
