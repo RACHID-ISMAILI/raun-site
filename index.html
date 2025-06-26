@@ -1,259 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>∆RAUN – Le Réseau Veille</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: #0f0f0f;
-      color: #f5f5f5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: #ff4a00;
-      margin-bottom: 1rem;
-    }
-    p, li {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      max-width: 700px;
-    }
-    .capsule {
-      background: #1a1a1a;
-      padding: 1.5rem;
-      border-radius: 12px;
-      margin-top: 2rem;
-      box-shadow: 0 0 15px rgba(255, 74, 0, 0.3);
-    }
-    .footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #888;
-    }
-    a {
-      color: #ff4a00;
-      text-decoration: none;
-    }
-    nav {
-      width: 100%;
-      background: #1a1a1a;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      border-bottom: 1px solid #333;
-    }
-    nav a {
-      color: #f5f5f5;
-      font-weight: bold;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-      max-width: 600px;
-      margin-top: 2rem;
-    }
-    input, textarea {
-      padding: 1rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    button {
-      background-color: #ff4a00;
-      color: white;
-      padding: 1rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    .share-buttons {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .share-buttons a {
-      padding: 0.8rem 1.5rem;
-      background-color: #333;
-      color: #fff;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAUN – Capsule de l’Éveil</title>
+  <link rel="stylesheet" href="style.css" />
 
-<style>
-  @media (max-width: 768px) {
-    body {
-      padding: 1rem;
-    }
-    h1 {
-      font-size: 1.8rem;
-    }
-    .capsule {
-      padding: 1rem;
-    }
-    nav {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-    .video-intro iframe {
-      height: 200px;
-    }
-    input, textarea, button {
-      font-size: 1rem;
-      padding: 0.8rem;
-    }
-    .share-buttons {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-  }
-</style>
-
-
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon192.png">
-<meta name="theme-color" content="#0f0f0f">
-
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js"></script>
+  <script src="firebaseConfig.js"></script>
 </head>
 <body>
+  <header>
+    <h1>RAUN</h1>
+    <p>Capsule de l'Éveil – Reconnais. Aligne. Projette.</p>
+  </header>
 
-<div class="name-banner">ISMAILI RACHID</div>
-<style>
-  .name-banner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #ff4a00;
-    color: white;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    z-index: 10000;
-    border-bottom-right-radius: 10px;
-    font-size: 1rem;
-  }
-</style>
+  <main>
+    <a href="admin.html" class="btn">Créer une capsule</a>
+  </main>
 
-
-<div class="video-intro">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-    title="Intro RAUN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen></iframe>
-</div>
-<style>
-  .video-intro {
-    margin: 2rem 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 800px;
-  }
-  .video-intro iframe {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 12px;
-  }
-</style>
-
-  <nav>
-    <a href="#manuel">Manuel</a>
-    <a href="#scientifique">Fondements</a>
-    <a href="#capsule">Capsule</a>
-    <a href="#action">Action</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <h1>∆RAUN – Le Réseau Veille</h1>
-  <p>Bienvenue dans l’espace de matérialisation du Feu. Ici commence la propagation physique du Cercle Lux.</p>
-
-  <div class="capsule" id="manuel">
-    <h2>📕 Manuel RAUN</h2>
-    <p><a href="#">Le manuel sera bientôt disponible ici</a></p>
-    <p>Ce manuel sert à comprendre la structure cognitive de RAUN et ses applications pratiques dans la vie personnelle et collective.</p>
-  </div>
-
-  <div class="capsule" id="scientifique">
-    <h2>🧠 Chapitre Scientifique</h2>
-    <p><strong>Fondements :</strong></p>
-    <ul>
-      <li>Neuroplasticité et mémoire autobiographique – Antonio Damasio, "Le sentiment de soi" ; Joseph LeDoux, "The Emotional Brain"</li>
-      <li>Cognition narrative – Jerome Bruner, "Actual Minds, Possible Worlds"</li>
-      <li>Attention dirigée et reprogrammation – Francisco Varela, "The Embodied Mind"</li>
-      <li>Interfaces IA et conscience augmentée – Études en Human-Computer Interaction et Cognitive Augmentation (MIT, HCI Stanford)</li>
-    </ul>
-    <p><strong>Objectif :</strong> comprendre comment RAUN agit concrètement sur les structures mentales à travers des mécanismes validés scientifiquement.</p>
-  </div>
-
-  <div class="capsule" id="capsule">
-    <h2>📌 Exemple de Capsule RAUN</h2>
-    <p><strong>Nom :</strong> "RA.I.UN - Rappel de l'Éveil"</p>
-    <p><strong>Structure cognitive :</strong></p>
-    <ul>
-      <li><strong>Rappel :</strong> "Je ne suis pas ce qu’on m’a appris, je suis ce que j’ai reconnu."</li>
-      <li><strong>Alignement :</strong> Identification d’un moment pivot de vie et clarification d’un objectif immédiat</li>
-      <li><strong>Projection :</strong> "Aujourd’hui, je prends une décision claire et observable pour incarner ce que je choisis de devenir."</li>
-    </ul>
-    <p>➡️ Usage recommandé : note personnelle quotidienne, revue de début de journée, outil de recentrage.</p>
-  </div>
-
-  <div class="capsule" id="action">
-    <h2>🔥 Lance ton action</h2>
-    <ul>
-      <li>📦 Commande ton manuel imprimé</li>
-      <li>🎨 Télécharge les visuels pour stickers</li>
-      <li>🧱 Rejoins le canal RAUN pour l’action urbaine</li>
-    </ul>
-  </div>
-
-  <div class="capsule" id="contact">
-    <h2>📬 Contact</h2>
-    <form action="https://formspree.io/f/mwkgyjqz" method="POST">
-      <input type="text" name="name" placeholder="Ton nom" required>
-      <input type="email" name="email" placeholder="Ton email" required>
-      <textarea name="message" rows="5" placeholder="Ton message..." required></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
-  </div>
-
-  <div class="share-buttons">
-    <a href="https://wa.me/?text=https://rachid-ismaili.github.io/raun-site/" target="_blank">Partager sur WhatsApp</a>
-    <a href="https://t.me/raun_network" target="_blank">Rejoindre sur Telegram</a>
-    <a href="mailto:?subject=RAUN Site&body=Découvre le site RAUN ici : https://rachid-ismaili.github.io/raun-site/" target="_blank">Partager par Email</a>
-  </div>
-
-  <div class="footer">
-    &copy; 2025 RAUN Network – Feu vivant du Réseau. /|\
-  </div>
-
-<script>
-  window.onload = function () {
-    if (!sessionStorage.getItem('visitedRAUN')) {
-      alert('🔥 Bienvenue dans l’espace RAUN – Le Feu commence à se propager. /|\');
-      sessionStorage.setItem('visitedRAUN', true);
-    }
-  };
-</script>
-<script type="module" src="./firebaseConfig.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/firebase-messaging-sw-v2.js')
-      .then(reg => console.log('SW enregistré ✅', reg))
-      .catch(err => console.error('Erreur SW ❌', err));
-  }
-</script>
-
+  <footer>
+    <a href="https://wa.me/?text=Je%20viens%20de%20visiter%20le%20site%20RAUN%3A%20https%3A%2F%2Frachid-ismaili.github.io%2Fraun-site%2F" target="_blank" class="whatsapp-button">
+      📤 Partager sur WhatsApp
+    </a>
+  </footer>
 </body>
 </html>
