@@ -1,8 +1,3 @@
-// Import des fonctions nécessaires
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
-// Configuration Firebase de ton projet
 const firebaseConfig = {
   apiKey: "AIzaSyD0R0IFgjCk3gWgVxK3-WnfLubhAqsKbOM",
   authDomain: "raun-network.firebaseapp.com",
@@ -13,7 +8,11 @@ const firebaseConfig = {
   measurementId: "G-LVV48NKDF8"
 };
 
-// Initialisation Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
 
+messaging
+  .requestPermission()
+  .then(() => messaging.getToken())
+  .then(token => console.log("FCM Token →", token))
+  .catch(err => console.error("FCM Permission error :", err));
