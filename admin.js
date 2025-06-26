@@ -1,35 +1,22 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyD0R0IFgjCk3gWgVxK3-WnfLubhAqsKbOM",
-  authDomain: "raun-network.firebaseapp.com",
-  projectId: "raun-network",
-  storageBucket: "raun-network.appspot.com",
-  messagingSenderId: "541416001018",
-  appId: "1:541416001018:web:df564a55255d4615206843"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = firebase.firestore();
 
 document.getElementById("capsuleForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const capsule = {
-    rappel: document.getElementById("rappel").value,
-    alignement: document.getElementById("alignement").value,
-    projection: document.getElementById("projection").value,
-    titre: document.getElementById("titre").value,
-    timestamp: new Date()
+    titre: e.target.titre.value,
+    rappel: e.target.rappel.value,
+    alignement: e.target.alignement.value,
+    projection: e.target.projection.value,
+    timestamp: firebase.firestore.Timestamp.now()
   };
 
   try {
-    await addDoc(collection(db, "capsules"), capsule);
+    await db.collection("capsules").add(capsule);
     alert("✅ Capsule enregistrée !");
     e.target.reset();
-  } catch (error) {
-    console.error("Erreur :", error);
+  } catch(err) {
+    console.error("Error saving capsule:", err);
     alert("❌ Échec de l'enregistrement");
   }
 });
