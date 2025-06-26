@@ -5,36 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RAUN Admin - Capsules</title>
   <link rel="stylesheet" href="style.css" />
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js"></script>
+  <script src="firebaseConfig.js"></script>
 </head>
 <body>
   <h1>🧠 Capsule RAUN</h1>
 
   <form id="capsuleForm">
-    <label for="rappel">Rappel</label>
-    <input type="text" id="rappel" name="rappel" required />
-
-    <label for="alignement">Alignement</label>
-    <input type="text" id="alignement" name="alignement" required />
-
-    <label for="projection">Projection</label>
-    <input type="text" id="projection" name="projection" required />
-
-    <label for="titre">Titre</label>
-    <input type="text" id="titre" name="titre" required />
-
-    <button type="submit">💾 Enregistrer la capsule</button>
-  </form>
-
-  <script type="module" src="./firebaseConfig.js"></script>
-  <script type="module" src="./admin.js"></script>
-
-  <!-- Bouton WhatsApp -->
-  <a
-    href="https://wa.me/?text=Je%20viens%20de%20créer%20une%20Capsule%20RAUN%20:%20https://rachid-ismaili.github.io/raun-site/admin.html"
-    target="_blank"
-    class="whatsapp-button"
-  >
-    📤 Partager sur WhatsApp
-  </a>
-</body>
-</html>
+    <label for="titre">Titre</label><input type="text" id="titre" name="titre" required />
+    <label for="rappel">Rappel</label><input type="text" id="rappel" name="rappel" required />
+    <label for="alignement">Alignement</label><input type="text" id="alignement" name="alignement" required />
+    <label for="projection
