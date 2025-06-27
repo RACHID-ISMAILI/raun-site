@@ -1,89 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Capsule RAUN - Admin</title>
-  <style>
-    body {
-      background-color: #eef7ff;
-      font-family: sans-serif;
-      padding: 20px;
-    }
-    label {
-      font-weight: bold;
-    }
-    input, button {
-      margin: 5px 0;
-      padding: 10px;
-      width: 100%;
-      font-size: 1em;
-    }
-    .container {
-      max-width: 600px;
-      margin: auto;
-    }
-    .btn-group {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    #result {
-      margin-top: 20px;
-      padding: 10px;
-      background: #dff0d8;
-      border-left: 4px solid #4caf50;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Capsule RAUN</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
-  <script>
-    var password = prompt("Entrez le mot de passe pour accéder à cette page :");
-    if (password !== "raun2025") {
-      document.body.innerHTML = "<h2>⛔ Accès refusé</h2><p>Mot de passe incorrect.</p>";
-    }
-  </script>
-  <div class="container">
-    <h1>🧠 Capsule RAUN</h1>
-    <form id="capsuleForm">
-      <label for="titre">Titre</label>
-      <input type="text" id="titre" required>
-
-      <label for="rappel">Rappel</label>
-      <input type="text" id="rappel" required>
-
-      <label for="alignement">Alignement</label>
-      <input type="text" id="alignement" required>
-
-      <label for="projection">Projection</label>
-      <input type="text" id="projection" required>
-
-      <div class="btn-group">
-        <button type="button" onclick="enregistrer()">💾 Enregistrer</button>
-        <button type="reset">🧹 Effacer</button>
-      </div>
-    </form>
-
-    <div id="result" style="display:none;"></div>
-  </div>
-
-  <script>
-    function enregistrer() {
-      const titre = document.getElementById("titre").value;
-      const rappel = document.getElementById("rappel").value;
-      const alignement = document.getElementById("alignement").value;
-      const projection = document.getElementById("projection").value;
-
-      const result = `
-        <h3>📝 Capsule enregistrée :</h3>
-        <p><strong>Titre :</strong> ${titre}</p>
-        <p><strong>Rappel :</strong> ${rappel}</p>
-        <p><strong>Alignement :</strong> ${alignement}</p>
-        <p><strong>Projection :</strong> ${projection}</p>
-      `;
-
-      document.getElementById("result").innerHTML = result;
-      document.getElementById("result").style.display = "block";
-    }
-  </script>
+<div id="login-block">
+<p>🔒 Accès sécurisé : entrez le mot de passe</p>
+<input type="password" id="passwordInput">
+<button onclick="checkPassword()">Entrer</button>
+<p id="error-message"></p>
+</div>
+<div id="capsule-form" style="display:none">
+<h1>🧠 Capsule RAUN</h1>
+<form>
+<input placeholder="Titre">
+<input placeholder="Rappel">
+<input placeholder="Alignement">
+<input placeholder="Projection">
+<button>Enregistrer</button>
+<button type="reset">Effacer</button>
+</form>
+</div>
 </body>
 </html>

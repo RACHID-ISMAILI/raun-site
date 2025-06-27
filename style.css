@@ -1,61 +1,39 @@
-
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #111;
-  color: white;
-  text-align: center;
-  padding-top: 40px;
+ background-color: #000;
+ color: white;
+ font-family: sans-serif;
+ text-align: center;
 }
-
-.header {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.profile-pic {
+ width: 120px;
+ height: 120px;
+ border-radius: 50%;
+ border: 5px solid cyan;
 }
-
-.circle-photo {
-  position: relative;
-  width: 200px;
-  height: 200px;
+.name-circle {
+ border: 2px dashed cyan;
+ display: inline-block;
+ border-radius: 50px;
+ padding: 5px 20px;
+ margin-top: 10px;
+ font-weight: bold;
 }
-
-.circle-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid white;
+.video-block {
+ margin: 20px auto;
+ padding: 20px;
+ border: 2px dashed gray;
+ width: 60%;
 }
-
-.circle-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: bold;
-  color: #00ffff;
-  animation: rotate 12s linear infinite;
-  white-space: nowrap;
+.quote {
+ font-style: italic;
+ margin: 20px 0;
 }
-
-@keyframes rotate {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-.intro {
-  margin-top: 20px;
+.buttons a {
+ margin: 10px;
+ background-color: #00ffbb;
+ padding: 10px 20px;
+ display: inline-block;
+ color: black;
+ text-decoration: none;
+ border-radius: 10px;
 }
