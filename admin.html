@@ -1,41 +1,89 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RAUN Admin - Capsules</title>
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Firebase Compat Versions -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
-  <script src="firebaseConfig.js"></script>
+  <meta charset="UTF-8">
+  <title>Capsule RAUN - Admin</title>
+  <style>
+    body {
+      background-color: #eef7ff;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, button {
+      margin: 5px 0;
+      padding: 10px;
+      width: 100%;
+      font-size: 1em;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      background: #dff0d8;
+      border-left: 4px solid #4caf50;
+    }
+  </style>
 </head>
 <body>
-  <h1>🧠 Capsule RAUN</h1>
-
-  <form id="capsuleForm">
-    <label for="titre">Titre</label>
-    <input type="text" id="titre" name="titre" required />
-    <label for="rappel">Rappel</label>
-    <input type="text" id="rappel" name="rappel" required />
-    <label for="alignement">Alignement</label>
-    <input type="text" id="alignement" name="alignement" required />
-    <label for="projection">Projection</label>
-    <input type="text" id="projection" name="projection" required />
-    <button type="submit">Créer Capsule</button>
-  </form>
-
-  <!-- Enregistrement SW -->
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/firebase-messaging-sw.js')
-        .then(reg => console.log('✅ ServiceWorker enregistré:', reg))
-        .catch(err => console.error('❌ Erreur SW:', err));
+    var password = prompt("Entrez le mot de passe pour accéder à cette page :");
+    if (password !== "raun2025") {
+      document.body.innerHTML = "<h2>⛔ Accès refusé</h2><p>Mot de passe incorrect.</p>";
     }
   </script>
+  <div class="container">
+    <h1>🧠 Capsule RAUN</h1>
+    <form id="capsuleForm">
+      <label for="titre">Titre</label>
+      <input type="text" id="titre" required>
 
-  <script src="script.js"></script>
+      <label for="rappel">Rappel</label>
+      <input type="text" id="rappel" required>
+
+      <label for="alignement">Alignement</label>
+      <input type="text" id="alignement" required>
+
+      <label for="projection">Projection</label>
+      <input type="text" id="projection" required>
+
+      <div class="btn-group">
+        <button type="button" onclick="enregistrer()">💾 Enregistrer</button>
+        <button type="reset">🧹 Effacer</button>
+      </div>
+    </form>
+
+    <div id="result" style="display:none;"></div>
+  </div>
+
+  <script>
+    function enregistrer() {
+      const titre = document.getElementById("titre").value;
+      const rappel = document.getElementById("rappel").value;
+      const alignement = document.getElementById("alignement").value;
+      const projection = document.getElementById("projection").value;
+
+      const result = `
+        <h3>📝 Capsule enregistrée :</h3>
+        <p><strong>Titre :</strong> ${titre}</p>
+        <p><strong>Rappel :</strong> ${rappel}</p>
+        <p><strong>Alignement :</strong> ${alignement}</p>
+        <p><strong>Projection :</strong> ${projection}</p>
+      `;
+
+      document.getElementById("result").innerHTML = result;
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
 </body>
 </html>
