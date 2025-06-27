@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RAUN Admin - Capsules</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Firebase Compat Versions -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
@@ -25,18 +27,15 @@
     <button type="submit">Créer Capsule</button>
   </form>
 
-  <script src="script.js"></script>
+  <!-- Enregistrement SW -->
   <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/firebase-messaging-sw.js')
-      .then(function(registration) {
-        console.log('Service Worker enregistré ✅', registration);
-      })
-      .catch(function(err) {
-        console.error('Erreur SW ❌', err);
-      });
-  }
-</script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/firebase-messaging-sw.js')
+        .then(reg => console.log('✅ ServiceWorker enregistré:', reg))
+        .catch(err => console.error('❌ Erreur SW:', err));
+    }
+  </script>
 
+  <script src="script.js"></script>
 </body>
 </html>
