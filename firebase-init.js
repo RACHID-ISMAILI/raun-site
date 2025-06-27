@@ -1,19 +1,17 @@
-
-// Import the functions you need from the SDKs you need
+// Import Firebase core
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+// Tu peux importer Firestore plus tard ici si besoin
 
-// Configuration Firebase de ton projet Delgado Nexus
+// Config Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyDvutb_kZGJbjMq4mDzfAEmXsjmSIaUMe4",
   authDomain: "delgado-nexus-project.firebaseapp.com",
   projectId: "delgado-nexus-project",
-  storageBucket: "delgado-nexus-project.firebasestorage.app",
+  storageBucket: "delgado-nexus-project.appspot.com",
   messagingSenderId: "619502357264",
-  appId: "1:619502357264:web:4ae1f227176eff68bd3395",
-  measurementId: "G-STNQ4SBJGH"
+  appId: "1:619502357264:web:4ae1f227176eff68bd3395"
 };
 
-// Initialisation Firebase
+// Init Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+console.log("🔥 Firebase Nexus Initialisé");
