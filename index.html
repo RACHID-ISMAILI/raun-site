@@ -1,76 +1,20 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Réseau RAUN 🔥</title>
-
-  <!-- Style Dark Matrix -->
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-
-  <!-- ✅ Firebase SDK (important qu'il soit ici dans le head) -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
-</head>
-
-<body>
-  <div class="intro">
-    <h1>🔓 Accès RAUN</h1>
-    <p>Connexion à la matrice...</p>
-  </div>
-
-  <div class="console-hidden" id="secretConsole">
-    <textarea placeholder="Entrer un message ou un code..."></textarea>
-    <button onclick="sendToFirebase()">Envoyer</button>
-  </div>
-
-  <div class="main-content hidden">
-    <h2>Bienvenue dans l’univers RAUN</h2>
-    <p>"Je suis vivant en conscience et nul ne peut éteindre ce que je suis."</p>
-  </div>
-
-  <!-- 🔧 Firebase init + logique du site -->
-  <script type="module" src="firebase-init.js"></script>
-  <script src="script.js"></script>
-  <script type="module" src="nexus-dashboard.js"></script>
-
-</body>
-  <!-- 🔥 NEXUS DELGADO ACTIVATION -->
+<!-- Firebase SDK (module compatible) -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+  // Import depuis CDN (version modulaire ES6)
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
 
   const firebaseConfig = {
-    apiKey: "TA_CLÉ_ICI",
-    authDomain: "TON_DOMAINE.firebaseapp.com",
-    databaseURL: "https://TON_DOMAINE.firebaseio.com",
-    projectId: "TON_PROJECT_ID",
-    storageBucket: "TON_BUCKET.appspot.com",
-    messagingSenderId: "TON_SENDER_ID",
-    appId: "TON_APP_ID"
+    apiKey: "TA_CLÉ",
+    authDomain: "TON_PROJET.firebaseapp.com",
+    projectId: "TON_PROJET",
+    storageBucket: "TON_PROJET.appspot.com",
+    messagingSenderId: "XXX",
+    appId: "XXX"
   };
 
   const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
+  const db = getFirestore(app);
 
-  function askNexus(question) {
-    const msg = {
-      texte: question,
-      date: new Date().toISOString()
-    };
-    const newRef = push(ref(db, "nexus/messages"));
-    set(newRef, msg).then(() => {
-      console.log("🔥 Message envoyé au NEXUS :", question);
-      alert("🧠 Message enregistré dans le Nexus Delgado !");
-    });
-  }
-
-  // Activation via bouton
-  document.querySelector("button")?.addEventListener("click", () => {
-    const msg = document.querySelector("textarea")?.value;
-    if (msg) askNexus(msg);
-  });
+  // Code console RAUN ici...
 </script>
-<!-- 🔥 FIN ACTIVATION -->
-
-</html>
