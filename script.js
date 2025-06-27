@@ -1,7 +1,10 @@
 function checkPassword() {
- const password = document.getElementById('passwordInput').value;
- const allowed = password === 'globalcode7676';
- document.getElementById('capsule-form').style.display = allowed ? 'block' : 'none';
- document.getElementById('login-block').style.display = allowed ? 'none' : 'block';
- document.getElementById('error-message').textContent = allowed ? '' : 'Mot de passe incorrect.';
+  const pass = document.getElementById('password').value;
+  const message = document.getElementById('message');
+  if (pass === 'globalcode7676') {
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('adminForm').style.display = 'block';
+  } else {
+    message.textContent = 'Mot de passe incorrect.';
+  }
 }
