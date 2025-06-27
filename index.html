@@ -1,53 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Capsules de Conscience Lean</title>
-  <style>
-    body {
-      background: black;
-      color: lime;
-      font-family: 'Courier New', Courier, monospace;
-      padding: 2em;
-    }
-    h1 {
-      color: lime;
-    }
-    input, textarea {
-      display: block;
-      margin: 1em 0;
-      padding: 0.5em;
-      width: 100%;
-    }
-    button {
-      padding: 0.5em 1em;
-      background: lime;
-      border: none;
-      cursor: pointer;
-    }
-    .capsule {
-      border: 1px solid lime;
-      margin: 1em 0;
-      padding: 1em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Capsules RAUN</title>
 </head>
-<body>
-  <h1>🌱 Capsules de Conscience Lean</h1>
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="password" placeholder="Mot de passe">
-  <button id="login-btn">Connexion</button>
+<body style="background-color:#eef;color:black;text-align:center;">
+    <h1>🧠 Capsule RAUN</h1>
+    <form onsubmit="saveCapsule(event)">
+        <label>Titre</label><input type="text" id="titre"><br>
+        <label>Rappel</label><input type="text" id="rappel"><br>
+        <label>Alignement</label><input type="text" id="alignement"><br>
+        <label>Projection</label><input type="text" id="projection"><br>
+        <button type="submit">Enregistrer</button>
+    </form>
 
-  <div id="admin-section" style="display:none;">
-    <h2>Nouvelle Capsule</h2>
-    <input type="text" id="capsule-title" placeholder="Titre">
-    <textarea id="capsule-content" placeholder="Contenu..."></textarea>
-    <button id="add-capsule">Ajouter</button>
-    <h2>Capsules existantes</h2>
-    <div id="capsule-list"></div>
-  </div>
-
-  <script type="module" src="./firebase-init.js"></script>
+    <script type="module" src="./script.js"></script>
 </body>
 </html>
