@@ -26,5 +26,17 @@
   </form>
 
   <script src="script.js"></script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/firebase-messaging-sw.js')
+      .then(function(registration) {
+        console.log('Service Worker enregistré ✅', registration);
+      })
+      .catch(function(err) {
+        console.error('Erreur SW ❌', err);
+      });
+  }
+</script>
+
 </body>
 </html>
