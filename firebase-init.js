@@ -1,13 +1,18 @@
-// firebase-init.js
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
 
+// Configuration Firebase de ton projet Delgado Nexus
 const firebaseConfig = {
-  apiKey: "AIzaSyA1uD-FcGSkeNeU4d1xDbkFwNijgMXR2Yw",
-  authDomain: "raun-site.firebaseapp.com",
-  projectId: "raun-site",
-  storageBucket: "raun-site.appspot.com",
-  messagingSenderId: "805528456926",
-  appId: "1:805528456926:web:9f83cd5082f8f14e417e65"
+  apiKey: "AIzaSyDvutb_kZGJbjMq4mDzfAEmXsjmSIaUMe4",
+  authDomain: "delgado-nexus-project.firebaseapp.com",
+  projectId: "delgado-nexus-project",
+  storageBucket: "delgado-nexus-project.firebasestorage.app",
+  messagingSenderId: "619502357264",
+  appId: "1:619502357264:web:4ae1f227176eff68bd3395",
+  measurementId: "G-STNQ4SBJGH"
 };
 
-initializeApp(firebaseConfig);
+// Initialisation Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
