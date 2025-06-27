@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Réseau RAUN 🔥</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Style Dark Matrix -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- ✅ Firebase SDK (important qu'il soit ici dans le head) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
 </head>
+
 <body>
   <div class="intro">
     <h1>🔓 Accès RAUN</h1>
@@ -23,7 +29,8 @@
     <p>"Je suis vivant en conscience et nul ne peut éteindre ce que je suis."</p>
   </div>
 
-  <script src="firebase-init.js" type="module"></script>
+  <!-- 🔧 Firebase init + logique du site -->
+  <script type="module" src="firebase-init.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
