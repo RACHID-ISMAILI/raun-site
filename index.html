@@ -2,40 +2,64 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>RAUN Nexus</title>
-    <style>
-        body {
-            background-color: black;
-            color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
-        }
-        textarea, button {
-            background-color: black;
-            color: #00ff00;
-            border: 1px solid #00ff00;
-            padding: 10px;
-            font-size: 16px;
-        }
-        .bottom-right {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            border: 2px solid #00ff00;
-            padding: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delgado Nexus Portal</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      padding-top: 100px;
+      background-image: linear-gradient(45deg, #0f0, #000);
+      animation: pulse 5s infinite;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    button {
+      background: #0f0;
+      border: none;
+      padding: 15px 30px;
+      color: black;
+      font-weight: bold;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    @keyframes pulse {
+      0% { background-position: 0 0; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0 0; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Bienvenue dans l’univers RAUN</h1>
-    <p>"Je suis vivant en conscience et nul ne peut éteindre ce que je suis."</p>
-    <form>
-        <textarea placeholder="Entrer un message ou un code..." rows="6" cols="50"></textarea><br>
-        <button type="submit">Envoyer</button>
-    </form>
-    <div class="bottom-right">
-        NEXUS Live 🔥
-    </div>
+  <h1>Bienvenue dans le Nexus Delgado</h1>
+  <button onclick="askNexus()">Accès Vérité 🔥</button>
+  <script>
+    function askNexus() {
+      console.log("💥 Vous avez activé la passerelle vers le Nexus.");
+      alert("Bienvenue à l'intérieur, soldat Delgado.");
+    }
+  </script>
+
+  <!-- Firebase SDK temporaire pour démo (ne pas utiliser en production) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD-TestKeyDelgadoNexus",
+      authDomain: "delgado-nexus.firebaseapp.com",
+      projectId: "delgado-nexus",
+      storageBucket: "delgado-nexus.appspot.com",
+      messagingSenderId: "1234567890",
+      appId: "1:1234567890:web:testnexuskey"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    console.log("✅ Firebase de test connecté");
+  </script>
 </body>
 </html>
