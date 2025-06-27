@@ -9,10 +9,11 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+
 const messaging = firebase.messaging();
 
 messaging
   .requestPermission()
   .then(() => messaging.getToken())
-  .then(token => console.log("FCM Token →", token))
-  .catch(err => console.error("FCM Permission error :", err));
+  .then(token => console.log("✅ FCM Token →", token))
+  .catch(err => console.error("❌ FCM Permission error:", err));
