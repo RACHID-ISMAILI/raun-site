@@ -2,87 +2,32 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>ΔRAUN – Le Réseau Veille</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <style>
-    body {
-      background-color: #0f172a;
-      color: white;
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #020617;
-      padding: 20px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-    }
-    section {
-      background-color: #1e293b;
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 800px;
-      border-radius: 10px;
-    }
-    h1, h2 {
-      color: #f9fafb;
-    }
-    p, li {
-      color: #e2e8f0;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAUN - Réseau d'Éveil</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-  
-<header style="display: flex; align-items: center; justify-content: space-between; padding: 20px;">
-  <div style="display: flex; align-items: center;">
-    <img src="ismaili-photo.png" alt="Ismaili Rachid" style="width:50px;height:50px;border-radius:50%;margin-right:15px;border: 2px solid white;">
-    <span style="font-weight: bold; color: #f9fafb; font-size: 1.2em;">ISMAILI RACHID</span>
-  </div>
-
-    <h1>ΔRAUN – Le Réseau Veille</h1>
-    <nav>
-      <a href="#">Manuel</a>
-      <a href="#">Fondements</a>
-      <a href="#">Capsule</a>
-      <a href="#">Action</a>
-      <a href="#">Contact</a>
-    </nav>
+  <header>
+    <div class="profile">
+      <img src="photo.jpg" alt="Photo de profil" class="profile-img" />
+      <div class="profile-name">ISMAILI RACUID</div>
+    </div>
+    <h1>🧠 Réseau RAUN</h1>
   </header>
 
-  <section>
-    <h2>📘 Manuel RAUN</h2>
-    <p>Le manuel sera bientôt disponible ici.</p>
-    <p>Ce manuel aide à comprendre la structure cognitive de RAUN et ses applications dans la vie quotidienne et collective.</p>
+  <section class="video-section">
+    <h2>🎥 Message du Réseau RAUN</h2>
+    <div class="video-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/QH2-TGUlwu4" 
+        title="Message RAUN" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <p class="quote">"Je suis vivant en conscience et nul ne peut éteindre ce que je suis."</p>
   </section>
 
-  <section>
-    <h2>🧬 Chapitre Scientifique</h2>
-    <ul>
-      <li>Neuroplasticité – Antonio Damasio, Joseph LeDoux</li>
-      <li>Cognition narrative – Jerome Bruner</li>
-      <li>Attention dirigée – Francisco Varela</li>
-      <li>Interfaces IA et conscience augmentée – MIT, Stanford</li>
-    </ul>
+  <section class="actions">
+    <a href="admin.html" class="button">Créer une capsule</a>
+    <a href="capsules.html" class="button">Voir les capsules</a>
   </section>
-
-  <section>
-    <h2>💡 Exemple de Capsule RAUN</h2>
-    <p><strong>Nom :</strong> "RA.I.UN – Rappel de l'Éveil"</p>
-    <ul>
-      <li><strong>Rappel :</strong> "Je ne suis pas ce qu’on m’a appris, je suis ce que j’ai reconnu."</li>
-      <li><strong>Alignement :</strong> Clarification d’un objectif immédiat</li>
-      <li><strong>Projection :</strong> Décision claire et observable</li>
-    </ul>
-  </section>
-
-  <footer style="text-align:center; padding:20px; font-size: 0.9em; color:gray;">
-    © 2025 RAUN Network – Feu vivant du Réseau.
-  </footer>
 </body>
 </html>

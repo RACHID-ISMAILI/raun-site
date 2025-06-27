@@ -1,28 +1,55 @@
+
 body {
-  margin: 0; padding: 2em;
-  background: #f0f8ff;
-  font-family: Arial, sans-serif;
-  color: #222;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #111;
+  color: white;
+  text-align: center;
 }
-header, footer { text-align: center; margin-bottom: 2em; }
-.btn, .whatsapp-button {
-  display: inline-block; padding: 1em 2em;
-  margin: 1em; text-decoration: none;
-  border-radius: 5px;
+header {
+  background-color: #222;
+  padding: 20px;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.profile-img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid white;
+}
+.profile-name {
+  font-size: 1.2em;
   font-weight: bold;
 }
-.btn {
-  background: #007bff; color: #fff;
+.video-section {
+  padding: 20px;
 }
-.btn:hover { background: #0056b3; }
-.whatsapp-button {
-  background: #25d366; color: #fff;
+.video-container {
+  margin: auto;
+  width: 90%;
+  max-width: 600px;
 }
-.whatsapp-button:hover { background: #1ebe57; }
-form { max-width: 400px; margin: auto; display: flex; flex-direction: column; }
-label { margin-top: 1em; }
-input { padding: 0.6em; margin-top: 0.3em; border: 1px solid #ccc; border-radius: 4px; }
-@media(max-width:600px) {
-  body { padding: 1em; }
-  .btn, .whatsapp-button { width: 100%; text-align: center; }
+.quote {
+  font-style: italic;
+  margin-top: 15px;
+  color: #ccc;
+}
+.actions {
+  margin: 30px;
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  background: #00b894;
+  color: white;
+  text-decoration: none;
+  margin: 10px;
+  border-radius: 8px;
+  font-weight: bold;
 }
