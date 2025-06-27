@@ -7,22 +7,27 @@ function sendToFirebase() {
   const message = document.querySelector('textarea').value;
   if (!message) return;
 
-  const data = {
-    message,
-    date: new Date().toISOString()
+  const payload = {
+    fields: {
+      message: { stringValue: message },
+      timestamp: { stringValue: new Date().toISOString() }
+    }
   };
 
-  fetch('https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/messages', {
+  fetch('https://firestore.googleapis.com/v1/projects/raun-site/databases/(default)/documents/messages', {
     method: 'POST',
-    body: JSON.stringify({ fields: {
-      message: { stringValue: message },
-      date: { stringValue: data.date }
-    }}),
+    body: JSON.stringify(payload),
     headers: {
       'Content-Type': 'application/json'
     }
   })
   .then(res => res.json())
-  .then(res => console.log("Message envoyé ✅", res))
-  .catch(err => console.error("Erreur Firebase ❌", err));
+  .then(data => {
+    console.log("🔥 Message envoyé dans la MATRICE RAUN+NEXUS ✅", data);
+    alert("Message reçu. Ton empreinte mentale est enregistrée 🧠.");
+  })
+  .catch(err => {
+    console.error("❌ Erreur de liaison Firebase : ", err);
+    alert("Erreur de transmission... Essaie encore frérot.");
+  });
 }
