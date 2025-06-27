@@ -1,23 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Réseau RAUN</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réseau RAUN 🔥</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body style="background-color:black;color:white;text-align:center;">
-    <div style="margin-top:30px;">
-        <div style="border: 4px dashed cyan; border-radius: 50%; width: 150px; height: 150px; margin: 0 auto;">
-            <img src="photo.jpg" alt="photo de profil" style="width: 100%; height: 100%; border-radius: 50%;" />
-        </div>
-        <div style="color:aqua;margin:10px auto;font-size:20px;">RACHID</div>
-        <h1>🧠 Réseau RAUN</h1>
-        <h2>🎥 Message du Réseau RAUN</h2>
-        <div style="border:2px dashed gray; padding: 20px; margin: 20px;">Vidéo non disponible</div>
-        <em>"Je suis vivant en conscience et nul ne peut éteindre ce que je suis."</em>
-        <br><br>
-        <button onclick="location.href='capsules.html'">Voir les capsules</button>
-        <button onclick="location.href='admin.html'">Créer une capsule</button>
-    </div>
+<body>
+  <div class="intro">
+    <h1>🔓 Accès RAUN</h1>
+    <p>Connexion à la matrice...</p>
+  </div>
+
+  <div class="console-hidden" id="secretConsole">
+    <textarea placeholder="Entrer un message ou un code..."></textarea>
+    <button onclick="sendToFirebase()">Envoyer</button>
+  </div>
+
+  <div class="main-content hidden">
+    <h2>Bienvenue dans l’univers RAUN</h2>
+    <p>"Je suis vivant en conscience et nul ne peut éteindre ce que je suis."</p>
+  </div>
+
+  <script src="firebase-init.js" type="module"></script>
+  <script src="script.js"></script>
 </body>
 </html>
