@@ -1,14 +1,42 @@
-
 body {
-    background-color: #f0f0ff;
-    color: #111;
-    font-family: Arial, sans-serif;
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(to right, #004d00, #00ff00, #004d00);
+    color: white;
     text-align: center;
-    padding: 40px;
+    padding: 20px;
 }
-a {
-    color: #0066cc;
-    font-size: 20px;
-    display: block;
-    margin: 20px;
+
+.banner {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.identity .profile {
+    width: 180px;
+    border-radius: 100px;
+    margin: 20px auto;
+}
+
+.identity h2 {
+    margin: 10px 0;
+}
+
+.vibration {
+    font-style: italic;
+    font-size: 1.2em;
+}
+
+section {
+    margin: 30px 0;
+}
+
+.enter-button {
+    background-color: #ff3300;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    display: inline-block;
 }
