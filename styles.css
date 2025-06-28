@@ -1,0 +1,33 @@
+
+body {
+    background-color: black;
+    color: lime;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+#corner-photo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    border-radius: 50%;
+    border: 2px solid lime;
+}
+video {
+    width: 80%;
+    margin-top: 20px;
+    border: 2px solid lime;
+}
+.buttons {
+    margin-top: 20px;
+}
+button {
+    background-color: lime;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
