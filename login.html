@@ -1,12 +1,28 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<head><meta charset="UTF-8"><title>Connexion RAUN</title><link rel="stylesheet" href="style.css"></head>
-<body class="dark">
-<h2>Connexion RAUN 🔐</h2>
-<input type="text" id="email" placeholder="Email">
-<input type="password" id="password" placeholder="Mot de passe">
-<button onclick="login()">Connexion</button>
-<script src="auth.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion Sécurisée</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🔐 Accès Privé</h1>
+  <form action="private/capsule.html" method="get" onsubmit="return checkPassword()">
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" required>
+    <button type="submit">Entrer</button>
+  </form>
+  <script>
+    function checkPassword() {
+      const pass = document.getElementById('password').value;
+      if (pass === 'raun2025') {
+        return true;
+      } else {
+        alert('Mot de passe incorrect');
+        return false;
+      }
+    }
+  </script>
 </body>
 </html>
