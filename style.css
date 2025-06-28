@@ -1,1 +1,30 @@
-/* Placeholder for style.css */
+
+body.dark {
+    background: black;
+    color: #00ff00;
+    font-family: monospace;
+    text-align: center;
+    padding: 30px;
+}
+.green { color: #00ff00; }
+.profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #00ff00;
+}
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background: #00ff00;
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+}
+input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+}
