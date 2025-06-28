@@ -2,51 +2,68 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Capsules Lean</title>
+  <meta charset="UTF-8">
+  <title>Capsule Lean</title>
 </head>
-<body style="font-family:sans-serif;background:#f5f5f5;color:#333;text-align:center;padding:20px;">
-    <h1>📘 Capsules Lean Management</h1>
-    <div id="capsulesContainer"></div>
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js';
-        import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+<body style="font-family:sans-serif;">
+  <h1>Capsules Lean 🔥</h1>
+  <form id="form">
+    <input name="titre" placeholder="Titre"><br>
+    <textarea name="contenu" placeholder="Contenu de la capsule"></textarea><br>
+    <button type="submit">Enregistrer</button>
+  </form>
+  <div id="capsules"></div>
+  <script type="module">
+    import {{ initializeApp }} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import {{ getAuth, onAuthStateChanged }} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+    import {{ getFirestore, collection, getDocs, addDoc }} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyDvutb_kZGJbjMq4mDzfAEmXsjmSIaUMe4",
-            authDomain: "delgado-nexus-project.firebaseapp.com",
-            projectId: "delgado-nexus-project",
-            storageBucket: "delgado-nexus-project.firebasestorage.app",
-            messagingSenderId: "619502357264",
-            appId: "1:619502357264:web:4ae1f227176eff68bd3395",
-            measurementId: "G-STNQ4SBJGH"
-        };
+    const firebaseConfig = {{
+      apiKey: "AIzaSyDvutb_kZGJbjMq4mDzfAEmXsjmSIaUMe4",
+      authDomain: "delgado-nexus-project.firebaseapp.com",
+      projectId: "delgado-nexus-project",
+      storageBucket: "delgado-nexus-project.firebasestorage.app",
+      messagingSenderId: "619502357264",
+      appId: "1:619502357264:web:4ae1f227176eff68bd3395",
+      measurementId: "G-STNQ4SBJGH"
+    }};
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-        const displayCapsules = async () => {
-            const querySnapshot = await getDocs(collection(db, "lean_capsules"));
-            let html = '';
-            querySnapshot.forEach(doc => {
-                const data = doc.data();
-                html += `<div style="border:1px solid #ccc;margin:10px;padding:10px;">
-                            <h3>${data.titre}</h3>
-                            <p>${data.texte}</p>
-                            <button onclick="share('${data.titre}', '${data.texte}')">Partager</button>
-                         </div>`;
-            });
-            document.getElementById('capsulesContainer').innerHTML = html;
-        };
+    onAuthStateChanged(auth, user => {{
+      if (!user) {{
+        window.location = 'login.html';
+        return;
+      }}
+      document.getElementById('form').onsubmit = async e => {{
+        e.preventDefault();
+        await addDoc(collection(db, "lean_capsules"), {{
+          titre: e.target.titre.value,
+          texte: e.target.contenu.value,
+          date: Date.now()
+        }});
+        load();
+      }};
+      load();
+    }});
 
-        window.share = function(titre, texte) {
-            const shareText = `${titre} - ${texte}`;
-            const url = encodeURIComponent(`https://wa.me/?text=${shareText}`);
-            window.open(url, '_blank');
-        }
+    async function load() {{
+      const snap = await getDocs(collection(db, "lean_capsules"));
+      let html = "";
+      snap.forEach(d => {{
+        const c = d.data();
+        html += `<div><h3>${c.titre}</h3><p>${c.texte}</p>
+                 <button onclick="share('${{c.titre}}','${{c.texte}}')">Partager</button></div>`;
+      }});
+      document.getElementById('capsules').innerHTML = html;
+    }}
 
-        displayCapsules();
-    </script>
+    function share(t, txt) {{
+      const txtEnc = encodeURIComponent(`${{t}}: ${{txt}}`);
+      window.open(`https://wa.me/?text=${{txtEnc}}`, '_blank');
+    }}
+  </script>
 </body>
 </html>
