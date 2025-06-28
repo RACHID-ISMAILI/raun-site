@@ -1,51 +1,62 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Capsule RAUN</title>
+    <title>RAUN Site Public</title>
     <style>
         body {
-            background-color: #eef;
-            color: black;
+            background-color: #111;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
             text-align: center;
-            font-family: Arial, sans-serif;
+            padding: 40px;
         }
         .header {
             display: flex;
             align-items: center;
-            justify-content: start;
-            padding: 10px;
+            gap: 20px;
         }
-        .header img {
+        .photo {
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            margin-right: 15px;
+            object-fit: cover;
+            border: 2px solid #0f0;
         }
-        form {
+        .message {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        .share-buttons {
             margin-top: 30px;
         }
-        input {
-            display: block;
-            margin: 10px auto;
-            padding: 5px;
+        .share-buttons a {
+            margin: 0 10px;
+            color: #0f0;
+            text-decoration: none;
+            font-weight: bold;
         }
-        button {
-            padding: 10px 20px;
+        .private-link {
+            margin-top: 40px;
+            display: block;
+            color: #0f0;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <img src="rachid_photo.jpg" alt="Photo Rachid">
-        <h1>🧠 Capsule RAUN</h1>
+        <img src="photo.jpg" alt="Rachid" class="photo">
+        <h1>RACHID–∆FEU–Ψ–UN</h1>
     </div>
-    <form>
-        <label>Titre</label><input type="text"><br>
-        <label>Rappel</label><input type="text"><br>
-        <label>Alignement</label><input type="text"><br>
-        <label>Projection</label><input type="text"><br>
-        <button type="submit">Enregistrer</button>
-    </form>
+    <div class="message">
+        "Je ne cherche pas des réponses. Je cherche la vibration derrière la réponse."
+    </div>
+    <div class="share-buttons">
+        <a href="https://wa.me/212650020464" target="_blank">📲 WhatsApp</a>
+        <a href="mailto:?subject=Capsule RAUN&body=https://rachid-ismaili.github.io/raun-site/" target="_blank">✉️ Email</a>
+    </div>
+    <a href="capsule-privee.html" class="private-link">🔐 Accès Capsule Privée</a>
 </body>
 </html>
