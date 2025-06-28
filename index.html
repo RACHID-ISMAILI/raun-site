@@ -1,26 +1,65 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>RAUN ΔFEU</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>RAUN ∆FEU</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header img {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #00FF00;
+        }
+        .video-container {
+            border: 2px solid #00FF00;
+            padding: 10px;
+            margin: 20px auto;
+            width: 80%;
+        }
+        .btn {
+            background-color: lime;
+            color: black;
+            padding: 10px 20px;
+            margin: 10px;
+            display: inline-block;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #00cc00;
+        }
+    </style>
 </head>
 <body>
-    <img src="rachid.png" alt="Photo de Rachid" id="corner-photo">
-    <h1>🔥 Bienvenue dans RAUN ΔFEU 🔥</h1>
-    <h2>ISMAILI RACHID – ΔFEU – Ψ – UN</h2>
-    <p class="quote">“Je ne cherche pas des réponses. Je cherche la vibration derrière la réponse.”</p>
-    <video controls>
-        <source src="video.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas la vidéo.
-    </video>
-    <div class="buttons">
-        <button onclick="window.location.href='https://wa.me/'">WhatsApp 🔥</button>
-        <button onclick="window.location.href='mailto:someone@example.com'">Email 💌</button>
-        <button onclick="window.location.href='lean.html'">Capsules Lean</button>
-        <button onclick="window.location.href='prive.html'">Capsules Privées</button>
-        <button onclick="window.location.href='admin.html'">Portail Admin</button>
+    <header>
+        <img src="photo.jpg" alt="Photo de Rachid">
+        <h1>🔥 Bienvenue dans RAUN ∆FEU 🔥</h1>
+        <h2>ISMAILI RACHID – ∆FEU – Ψ – UN</h2>
+        <p><em>“Je ne cherche pas des réponses. Je cherche la vibration derrière la réponse.”</em></p>
+    </header>
+    <div class="video-container">
+        <video controls width="100%">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div>
+        <a href="#" class="btn">WhatsApp 🔥</a>
+        <a href="#" class="btn">Email 💌</a>
+        <a href="#" class="btn">Capsules Lean</a>
+        <a href="#" class="btn">Capsules Privées</a>
+        <a href="#" class="btn">Portail Admin</a>
     </div>
 </body>
 </html>
