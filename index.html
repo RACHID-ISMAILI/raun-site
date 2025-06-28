@@ -6,47 +6,43 @@
     <title>RAUN ΔFEU</title>
     <style>
         body {
-            background: linear-gradient(to right, #006400, #00ff00);
+            background: linear-gradient(to right, #006400, #00FF00);
+            color: #00FF00;
             font-family: 'Courier New', Courier, monospace;
-            color: #00ff00;
             text-align: center;
-            padding: 20px;
+            padding: 2em;
         }
-        .profile-img {
+        .profile-pic {
+            border-radius: 50%;
             width: 120px;
             height: 120px;
-            border-radius: 50%;
-            border: 3px solid #00ff00;
-            box-shadow: 0 0 10px #00ff00;
-            margin: 20px auto;
+            object-fit: cover;
         }
-        video {
-            width: 80%;
-            margin: 20px 0;
-        }
-        .chapters a {
-            color: #00ff00;
+        a {
             display: block;
-            margin: 5px;
+            margin: 0.5em;
+            color: #00FF00;
             text-decoration: none;
+        }
+        a:hover {
+            color: white;
         }
     </style>
 </head>
 <body>
     <h1>🔥 Bienvenue dans RAUN ΔFEU 🔥</h1>
     <h2>ISMAILI RACHID – ΔFEU – Ψ – UN</h2>
-    <img src="images/rachid_photo.png" alt="Photo de Rachid" class="profile-img">
-    <p><em>Je ne cherche pas des réponses. Je cherche la vibration derrière la réponse.</em></p>
-    <video controls>
-        <source src="media/intro_video.mp4" type="video/mp4">
+    <img src="photo_rachid.png" alt="Photo de Rachid" class="profile-pic"><br>
+    <em>Je ne cherche pas des réponses. Je cherche la vibration derrière la réponse.</em>
+    <br><br>
+    <video width="640" controls>
+        <source src="intro.mp4" type="video/mp4">
         Votre navigateur ne supporte pas la vidéo.
     </video>
-    <div class="chapters">
-        <h3>🔥 Chapitres RAUN 🔥</h3>
-        <a href="#">Capsules Lean</a>
-        <a href="#">Capsules Privées</a>
-        <a href="#">Portail Admin</a>
-        <a href="https://wa.me/212650020464">Contact WhatsApp</a>
-    </div>
+    <h3>🔥 Chapitres RAUN 🔥</h3>
+    <a href="#">Capsules Lean</a>
+    <a href="#">Capsules Privées</a>
+    <a href="#">Portail Admin</a>
+    <a href="#">Contact WhatsApp</a>
 </body>
 </html>
