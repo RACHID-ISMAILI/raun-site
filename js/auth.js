@@ -1,0 +1,1 @@
+// Auth handling script
