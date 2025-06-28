@@ -2,64 +2,50 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>RAUN ∆FEU</title>
+    <title>Capsule RAUN</title>
     <style>
         body {
-            background-color: black;
-            color: #00FF00;
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        header img {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 2px solid #00FF00;
-        }
-        .video-container {
-            border: 2px solid #00FF00;
-            padding: 10px;
-            margin: 20px auto;
-            width: 80%;
-        }
-        .btn {
-            background-color: lime;
+            background-color: #eef;
             color: black;
-            padding: 10px 20px;
-            margin: 10px;
-            display: inline-block;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
+            text-align: center;
+            font-family: Arial, sans-serif;
         }
-        .btn:hover {
-            background-color: #00cc00;
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            padding: 10px;
+        }
+        .header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        form {
+            margin-top: 30px;
+        }
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 5px;
+        }
+        button {
+            padding: 10px 20px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="photo.jpg" alt="Photo de Rachid">
-        <h1>🔥 Bienvenue dans RAUN ∆FEU 🔥</h1>
-        <h2>ISMAILI RACHID – ∆FEU – Ψ – UN</h2>
-        <p><em>“Je ne cherche pas des réponses. Je cherche la vibration derrière la réponse.”</em></p>
-    </header>
-    <div class="video-container">
-        <video controls width="100%">
-            <source src="video.mp4" type="video/mp4">
-        </video>
+    <div class="header">
+        <img src="rachid_photo.jpg" alt="Photo Rachid">
+        <h1>🧠 Capsule RAUN</h1>
     </div>
-    <div>
-        <a href="#" class="btn">WhatsApp 🔥</a>
-        <a href="#" class="btn">Email 💌</a>
-        <a href="#" class="btn">Capsules Lean</a>
-        <a href="#" class="btn">Capsules Privées</a>
-        <a href="#" class="btn">Portail Admin</a>
-    </div>
+    <form>
+        <label>Titre</label><input type="text"><br>
+        <label>Rappel</label><input type="text"><br>
+        <label>Alignement</label><input type="text"><br>
+        <label>Projection</label><input type="text"><br>
+        <button type="submit">Enregistrer</button>
+    </form>
 </body>
 </html>
