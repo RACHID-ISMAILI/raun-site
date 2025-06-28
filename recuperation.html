@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Récupération Mot de Passe 🔐</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #f1f1f1;
+            text-align: center;
+            padding-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 Récupération du mot de passe RAUN</h1>
+    <p>Entrez votre <strong>code de secours</strong> pour révéler le mot de passe.</p>
+    <input type="text" id="codeInput" placeholder="Code de secours"><br>
+    <button onclick="verifierCode()">Valider</button>
+    <p id="resultat" style="margin-top:20px;"></p>
+
+    <script>
+        function verifierCode() {
+            var code = document.getElementById('codeInput').value;
+            var result = document.getElementById('resultat');
+            if(code === 'feu-sacré-777') {
+                result.innerHTML = "<strong>Mot de passe:</strong> ΔRaunFeu2025";
+                result.style.color = 'lightgreen';
+            } else {
+                result.innerText = "❌ Code incorrect.";
+                result.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
