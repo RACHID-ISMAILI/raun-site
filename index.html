@@ -1,42 +1,67 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RAUN ∆FEU</title>
-  <style>
-    body {
-      background: linear-gradient(to right, #000, #0f0, #000);
-      color: white;
-      font-family: 'Courier New', Courier, monospace;
-      text-align: center;
-      padding-top: 100px;
-      animation: fireGlow 5s infinite alternate;
-    }
-    h1 { font-size: 3em; margin-bottom: 30px; }
-    @keyframes fireGlow {
-      from { background-color: #000; }
-      to { background-color: #111; }
-    }
-    .capsule-container {
-      margin-top: 50px;
-    }
-    .capsule {
-      background: #111;
-      border: 1px solid #0f0;
-      margin: 10px auto;
-      padding: 20px;
-      width: 80%;
-    }
-    .share-btns {
-      margin-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>RAUN ∆FEU</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            background: linear-gradient(to right, #004d00, #00ff00, #004d00);
+            color: white;
+        }
+        .header {
+            font-size: 40px;
+            font-weight: bold;
+            padding: 20px;
+        }
+        .flames {
+            font-size: 50px;
+        }
+        .name-block {
+            margin-top: 30px;
+            font-size: 24px;
+        }
+        .photo {
+            margin-top: 20px;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        .video-section {
+            margin-top: 30px;
+        }
+        .quote {
+            font-size: 20px;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        .chapters {
+            margin-top: 40px;
+            font-size: 22px;
+        }
+    </style>
 </head>
 <body>
-  <h1>🔥 Bienvenue dans RAUN ∆FEU 🔥</h1>
-  <div class="capsule-container" id="capsules"></div>
-  <script type="module" src="./firebase-init.js"></script>
-  <script type="module" src="./main.js"></script>
+    <div class="header flames">🔥 Bienvenue dans RAUN ∆FEU 🔥</div>
+    <div class="name-block">ISMAILI RACHID – ∆FEU – Ψ – UN – 2025</div>
+    <img class="photo" src="ismaili-photo.png" alt="Photo de Rachid">
+    <div class="video-section">
+        <video width="320" height="240" controls>
+            <source src="video.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo.
+        </video>
+        <div class="quote">Je ne cherche pas des réponses. Je cherche la vibration derrière la réponse.</div>
+    </div>
+    <div class="chapters">
+        <h2>Chapitres RAUN</h2>
+        <ul>
+            <li>🔥 Conscience Lean</li>
+            <li>🔥 Capsules Privées</li>
+            <li>🔥 Portail Admin</li>
+        </ul>
+    </div>
 </body>
 </html>
