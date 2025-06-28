@@ -1,14 +1,42 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Delgado Nexus</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAUN ∆FEU</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #000, #0f0, #000);
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      padding-top: 100px;
+      animation: fireGlow 5s infinite alternate;
+    }
+    h1 { font-size: 3em; margin-bottom: 30px; }
+    @keyframes fireGlow {
+      from { background-color: #000; }
+      to { background-color: #111; }
+    }
+    .capsule-container {
+      margin-top: 50px;
+    }
+    .capsule {
+      background: #111;
+      border: 1px solid #0f0;
+      margin: 10px auto;
+      padding: 20px;
+      width: 80%;
+    }
+    .share-btns {
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Bienvenue sur Delgado Nexus</h1>
-    <p><a href="capsules.html">Capsules de Conscience Lean</a></p>
-    <p><a href="form.html">Capsules RAUN</a></p>
+  <h1>🔥 Bienvenue dans RAUN ∆FEU 🔥</h1>
+  <div class="capsule-container" id="capsules"></div>
+  <script type="module" src="./firebase-init.js"></script>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>
