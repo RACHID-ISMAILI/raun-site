@@ -2,25 +2,62 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Capsule RAUN</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion RAUN 🔐</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    input, button {
+      margin: 10px;
+      padding: 12px;
+      font-size: 1em;
+    }
+    .capsule {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🧠 Capsule RAUN</h1>
-        <form>
-            <label for="titre">Titre</label>
-            <input type="text" id="titre" name="titre"><br>
-            <label for="rappel">Rappel</label>
-            <input type="text" id="rappel" name="rappel"><br>
-            <label for="alignement">Alignement</label>
-            <input type="text" id="alignement" name="alignement"><br>
-            <label for="projection">Projection</label>
-            <input type="text" id="projection" name="projection"><br>
-            <button type="submit">Enregistrer</button>
-        </form>
-        <p class="inspiration">Chaque capsule est un miroir de toi-même, explore, écris, allume le feu.</p>
-    </div>
+  <h1>🔐 Connexion RAUN</h1>
+  <input type="email" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Mot de passe" />
+  <button onclick="login()">Connexion</button>
+  <div id="error" style="color:red;"></div>
+
+  <div class="capsule" id="capsule">
+    <h2>📦 Capsule Lean RAUN</h2>
+    <form onsubmit="event.preventDefault(); saveCapsule();">
+      <input type="text" placeholder="Titre" id="titre" /><br>
+      <textarea placeholder="Contenu de la capsule Lean..." id="contenu" rows="5" cols="40"></textarea><br>
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+
+  <script>
+    function login() {
+      const email = document.getElementById('email').value;
+      const pass = document.getElementById('password').value;
+      if (email === 'admin@raun.com' && pass === 'raunsecure2025') {
+        document.getElementById('capsule').style.display = 'block';
+        document.getElementById('error').innerText = '';
+      } else {
+        document.getElementById('error').innerText = 'Identifiants incorrects !';
+      }
+    }
+
+    function saveCapsule() {
+      alert('Capsule enregistrée localement 💾 (Firebase à venir)');
+    }
+  </script>
 </body>
 </html>
