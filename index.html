@@ -3,50 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RAUN ΔFEU – Prototype</title>
+  <title>RAUN ΔFEU – Expansion</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: #121212;
-      color: #eee;
+      overflow: hidden;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #eee;
+      background: black;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
     }
+
     h1 {
       font-size: 3rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.2em;
+      animation: glitch 3s infinite;
     }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px red; }
+      25% { text-shadow: -2px -2px lime; }
+      50% { text-shadow: 2px -2px cyan; }
+      75% { text-shadow: -2px 2px magenta; }
+      100% { text-shadow: 0 0 2px white; }
+    }
+
     p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      margin-top: 0.6rem;
+      margin-bottom: 1.4rem;
     }
+
     button {
-      margin-top: 1rem;
-      padding: 0.8rem 1.6rem;
-      font-size: 1rem;
-      background: #fe4500;
+      padding: 1rem 2rem;
+      background-color: #fe4500;
       border: none;
-      border-radius: 4px;
-      color: #fff;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: white;
       cursor: pointer;
-      transition: background 0.2s;
+      animation: pulse 2s infinite;
     }
-    button:hover {
-      background: #ff5e1a;
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
-
 <body>
-  <h1>RAUN ΔFEU</h1>
-  <p>Prototype minimaliste prêt à être déployé 👇</p>
-  <button onclick="alert('🔥 RAUN ΔFEU activé !')">
-    Activer RAUN ΔFEU
-  </button>
+  <canvas id="matrix"></canvas>
+  <div class="content">
+    <h1>RAUN ΔFEU</h1>
+    <p>Prototype avancé prêt à tout cramer 🔥👇</p>
+    <button onclick="alert('⚡ RAUN ΔFEU phase 2 activée !')">
+      Activer RAUN ΔFEU
+    </button>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "アァイイウエオカキクケコサシスセソABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array.from({ length: columns }, () => 1);
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#0F0";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+
+    window.addEventListener("resize", () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
+  </script>
 </body>
 </html>
