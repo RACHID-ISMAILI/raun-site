@@ -1,62 +1,56 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>RAUN ΔFEU – Ismaili Rachid</title>
-  <link rel="stylesheet" href="style.css" />
-
-<audio autoplay loop id="cosmic-music" src="cosmic.mp3"></audio>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAUN ΔFEU</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 20vh;
+    }
+    input {
+      padding: 10px;
+      font-size: 18px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: lime;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: darkgreen;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-  <div class="profile">
-    <img src="photo.jpg" alt="Rachid" class="avatar">
-    <h1>🔥 Bienvenue dans RAUN ΔFEU 🔥</h1>
-    <h2>ISMAILI RACHID - ΔFEU - Ψ - UN</h2>
-    <p>“Je ne cherche pas des réponses. Je cherche la vibration derrière la réponse.”</p>
-    <div class="buttons">
-      <a href="https://wa.me/" class="btn">📞 WhatsApp</a>
-      <a href="mailto:email@example.com" class="btn">📧 Email</a>
-      <a href="#" class="btn">🧪 Capsules Lean</a>
-      <a href="#" class="btn">🔒 Capsules Privées</a>
-      <a href="admin.html" class="btn">🛡️ Portail Admin</a>
-    </div>
-  </div>
+  <h1>Bienvenue sur RAUN ΔFEU</h1>
+  <p>Tape le code secret pour entrer...</p>
+  <input type="password" id="codeInput" placeholder="Entrez le code...">
+  <br>
+  <button onclick="verifierCode()">Entrer</button>
 
-<div class="features">
-  <button class="btn" onclick="launchScanner()">🔬 Scanner ADN</button>
-  <button class="btn" onclick="startAI()">🤖 Assistant RAUN</button>
-</div>
-
-<div id="ai-box" style="display:none; margin-top:20px;">
-  <textarea id="ai-log" rows="8" style="width:90%; font-family:monospace;"></textarea><br>
-  <input type="text" id="ai-input" placeholder="Parle à RAUN ΔFEU..." style="width:60%;" />
-  <button onclick="sendAI()">Envoyer</button>
-</div>
-
-
-<div id="dashboard" style="display:none;">
-  <h2>🧠 RAUN ΔFEU - Dashboard</h2>
-  <p>Dossiers secrets, accès, logs.</p>
-  <ul>
-    <li><a href="capsule1.html">📂 Capsule #1 - Le Code</a></li>
-    <li><a href="capsule2.html">📂 Capsule #2 - ADN</a></li>
-    <li><a href="capsule3.html">📂 Capsule #3 - Argent</a></li>
-  </ul>
-</div>
-<button class="btn" onclick="toggleDashboard()">🕶️ Accès Dark Dashboard</button>
-
-
-<button class="btn" onclick="playVoice()">🎙️ Activer Voix RAUN</button>
-<button class="btn" onclick="startVoiceCommand()">🧠 Activer Commande Vocale</button>
-
-<div class="slider-container">
-  <div class="slider">
-    <div class="slide">🧪 Capsule 1 - CODE</div>
-    <div class="slide">🧬 Capsule 2 - ADN</div>
-    <div class="slide">💸 Capsule 3 - ARGENT</div>
-  </div>
-</div>
-
+  <script>
+    function verifierCode() {
+      const code = document.getElementById("codeInput").value.trim();
+      if (code === "RAUN-G4TE-XN2") {
+        window.location.href = "secret.html"; // redirige vers ta page secrète
+      } else {
+        alert("Code incorrect. ⛐");
+      }
+    }
+  </script>
 </body>
 </html>
