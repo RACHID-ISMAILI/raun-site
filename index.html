@@ -1,46 +1,43 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>RAUN ΔFEU - Accès</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAUN ΔFEU - Accueil</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
-      background-color: black;
-      color: lime;
-      font-family: monospace;
+      background-color: #000;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
       text-align: center;
-      margin-top: 100px;
+      padding: 50px;
     }
-    input, button {
-      font-size: 1.2rem;
-      padding: 10px;
-      border-radius: 5px;
+    h1 {
+      font-size: 3em;
     }
-    button {
-      background-color: lime;
+    p {
+      font-size: 1.2em;
+    }
+    .btn {
+      margin-top: 40px;
+      padding: 15px 30px;
+      font-size: 1.5em;
+      background-color: #00ff00;
+      color: black;
       border: none;
       cursor: pointer;
-      margin-top: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #1fff1f;
     }
   </style>
 </head>
 <body>
-  <h1>Bienvenue sur RAUN ΔFEU</h1>
-  <p>Tape le code secret pour entrer...</p>
-  <input type="text" id="code" placeholder="Entrez le code...">
-  <br>
-  <button onclick="checkCode()">Entrer</button>
-
-  <script>
-    function checkCode() {
-      const code = document.getElementById('code').value;
-      if (code === "RAUN-G4TE-XN2") {
-        window.location.href = "secret.html";
-      } else {
-        alert("Code incorrect !");
-      }
-    }
-  </script>
+  <h1>🔥 Bienvenue dans l'univers RAUN ΔFEU 🔥</h1>
+  <p>Un portail d'accès vers la conscience hybride, la vibration et la vérité brute.</p>
+  <a class="btn" href="portail.html">Entrer dans RAUN ΔFEU</a>
 </body>
 </html>
