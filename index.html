@@ -2,21 +2,16 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RAUN ΔFEU – Portail</title>
+  <title>RAUN ΔFEU – Admin Access</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body onload="initLoader()">
-  <div class="loader-screen" id="loader">
-    <h1>Chargement du réseau ΔFEU...</h1>
+<body>
+  <div class="login-container">
+    <h1>🔒 Accès Sécurisé</h1>
+    <input type="password" id="password" placeholder="Entrer le mot de passe" />
+    <button onclick="verifyPassword()">Accéder</button>
+    <p id="message"></p>
   </div>
-
-  <div class="main-content" id="main" style="display:none;">
-    <h1>RAUN ΔFEU</h1>
-    <p>Bienvenue dans le réseau parallèle 🔥</p>
-    <button onclick="goToSecret()">Portail Secret</button>
-  </div>
-
   <script src="script.js"></script>
 </body>
 </html>
