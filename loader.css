@@ -1,0 +1,36 @@
+
+#loader-screen {
+  background-color: black;
+  color: limegreen;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+}
+
+.loader {
+  border: 6px solid #222;
+  border-top: 6px solid limegreen;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-top: 20px;
+}
+
+.matrix-text {
+  font-size: 1.5rem;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px limegreen; }
+  to { text-shadow: 0 0 20px limegreen; }
+}
