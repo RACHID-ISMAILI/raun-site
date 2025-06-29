@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>RAUN ΔNIMA – Avatar Joyeux</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="background:black; color:limegreen; font-family:monospace; text-align:center; padding:20px;">
+
+  <h1>🤖 Bonjour, je suis RAUN ΔNIMA</h1>
+  <p>Ton double joyeux, prêt à t’écouter et te répondre 🧠💫</p>
+
+  <img src="avatar_joyeux.png" alt="RAUN ΔNIMA" style="width:200px; border-radius:50%; border:3px solid limegreen; margin-bottom:20px;">
+
+  <audio id="voice-anima" src="welcome-anima.mp3" autoplay></audio>
+
+  <div style="margin-top:20px;">
+    <input type="text" id="question" placeholder="Pose-moi ta question..." style="width:60%;">
+    <button onclick="respond()">Envoyer</button>
+    <div id="response" style="margin-top:20px; font-weight:bold;"></div>
+  </div>
+
+  <script>
+    function respond() {
+      const input = document.getElementById("question").value.toLowerCase();
+      const output = document.getElementById("response");
+      let response = "";
+
+      if (input.includes("matrice")) {
+        response = "La matrice est une école. L’éveil est la sortie 🧬";
+      } else if (input.includes("mantra")) {
+        response = "Respire, ressens, deviens lumière 💫";
+      } else if (input.includes("argent")) {
+        response = "L’argent n’est qu’un code. Décrypte et crée le tien 💸";
+      } else {
+        response = "Je t’entends… mais dis-moi plus 🤖";
+      }
+
+      output.innerText = "ΔNIMA : " + response;
+      const synth = window.speechSynthesis;
+      const utter = new SpeechSynthesisUtterance(response);
+      utter.lang = "fr-FR";
+      synth.speak(utter);
+    }
+  </script>
+
+</body>
+</html>
