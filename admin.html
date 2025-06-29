@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>RAUN ΔFEU – Admin Secret</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>RAUN ΔFEU – Admin</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <h1>Bienvenue dans l’espace secret ΔFEU</h1>
-  <p>Contrôle admin activé.</p>
+<body onkeydown="activateAccess(event)">
+  <div id="trigger-zone">
+    <h1>Bienvenue sur RAUN ΔFEU</h1>
+    <p>Tape le code secret pour entrer...</p>
+  </div>
+
+  <div id="terminal" style="display:none;">
+    <h2>ΔFEU TERMINAL</h2>
+    <input type="text" id="command" placeholder="Tape une commande..." />
+    <button onclick="runCommand()">Exécuter</button>
+    <pre id="output"></pre>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
