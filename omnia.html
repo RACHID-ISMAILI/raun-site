@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>RAUN ΔOMNIA</title>
+  <link rel="stylesheet" href="omnia.css">
+</head>
+<body id="main-body" class="clean">
+  <h1>RAUN ΔOMNIA</h1>
+  <button onclick="toggleMode()">🌓 Switch Mode</button><br><br>
+
+  <textarea id="userInput" rows="6" placeholder="Pose une question ou colle un texte..." style="width:90%;"></textarea><br>
+  <button onclick="processInput()">Analyser</button>
+
+  <div id="output" style="margin-top:20px; font-weight:bold;"></div>
+
+  <hr>
+  <input type="file" id="fileInput" />
+  <button onclick="analyzeFile()">Analyser le fichier</button>
+  <div id="fileContent" style="margin-top:20px;"></div>
+
+  <script src="omnia.js"></script>
+</body>
+</html>
