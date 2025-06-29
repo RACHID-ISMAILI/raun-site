@@ -1,53 +1,52 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAUN ΔFEU – Prototype</title>
   <style>
-  @media (max-width: 600px) {
-    .profile-avatar {
-      width: 100px;
-      height: 100px;
-      margin: 20px auto;
-      border-radius: 50%;
-      display: block;
-    }
-
-    .button-container {
+    body {
+      margin: 0;
+      padding: 0;
+      background: #121212;
+      color: #eee;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       display: flex;
       flex-direction: column;
-      gap: 10px;
       align-items: center;
-      margin: 20px 0;
+      justify-content: center;
+      height: 100vh;
     }
-
-    .button-container a {
-      width: 80%;
-      text-align: center;
-      font-size: 1.1em;
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
     }
-
-    h1, h2, p {
-      text-align: center;
-      padding: 0 10px;
+    p {
+      font-size: 1.2rem;
     }
-  }
-</style>
-
-  <meta charset="UTF-8">
-  <title>RAUN ∆FEU - Accueil</title>
-  <link rel="stylesheet" href="style.css">
+    button {
+      margin-top: 1rem;
+      padding: 0.8rem 1.6rem;
+      font-size: 1rem;
+      background: #fe4500;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #ff5e1a;
+    }
+  </style>
 </head>
+
 <body>
-  <img src="photo.jpg" alt="Photo de Rachid" class="photo">
-  <h1>🔥 Bienvenue dans RAUN ∆FEU 🔥</h1>
-  <h2>ISMAILI RACHID – ∆FEU – Ψ – UN</h2>
-  <p>“Je ne cherche pas des réponses. Je cherche la vibration derrière la réponse.”</p>
-  <div class="buttons">
-    <a href="https://wa.me/" class="btn">📞 WhatsApp</a>
-    <a href="mailto:email@example.com" class="btn">📧 Email</a>
-    <a href="capsules_lean.html" class="btn">🧠 Capsules Lean</a>
-    <a href="login.html" class="btn">🔐 Capsules Privées</a>
-    <a href="admin.html" class="btn">🛠️ Portail Admin</a>
-  </div>
+  <h1>RAUN ΔFEU</h1>
+  <p>Prototype minimaliste prêt à être déployé 👇</p>
+  <button onclick="alert('🔥 RAUN ΔFEU activé !')">
+    Activer RAUN ΔFEU
+  </button>
 </body>
 </html>
