@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <title>RAUN ΔFEU – Ismaili Rachid</title>
   <link rel="stylesheet" href="style.css" />
+
+<audio autoplay loop id="cosmic-music" src="cosmic.mp3"></audio>
+
 </head>
 <body>
   <div class="profile">
@@ -30,6 +33,18 @@
   <input type="text" id="ai-input" placeholder="Parle à RAUN ΔFEU..." style="width:60%;" />
   <button onclick="sendAI()">Envoyer</button>
 </div>
+
+
+<div id="dashboard" style="display:none;">
+  <h2>🧠 RAUN ΔFEU - Dashboard</h2>
+  <p>Dossiers secrets, accès, logs.</p>
+  <ul>
+    <li><a href="capsule1.html">📂 Capsule #1 - Le Code</a></li>
+    <li><a href="capsule2.html">📂 Capsule #2 - ADN</a></li>
+    <li><a href="capsule3.html">📂 Capsule #3 - Argent</a></li>
+  </ul>
+</div>
+<button class="btn" onclick="toggleDashboard()">🕶️ Accès Dark Dashboard</button>
 
 </body>
 </html>

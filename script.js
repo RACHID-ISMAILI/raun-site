@@ -36,3 +36,13 @@ function sendAI() {
   }
   document.getElementById("ai-input").value = "";
 }
+
+
+function toggleDashboard() {
+  let dash = document.getElementById("dashboard");
+  if (dash.style.display === "none") {
+    dash.style.display = "block";
+  } else {
+    dash.style.display = "none";
+  }
+}
