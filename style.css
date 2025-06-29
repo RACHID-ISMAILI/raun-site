@@ -35,3 +35,34 @@ body {
   font-weight: bold;
   border-radius: 8px;
 }
+
+
+.slider-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: 30px auto;
+  border: 2px solid limegreen;
+  border-radius: 8px;
+  background: black;
+}
+
+.slider {
+  display: flex;
+  animation: scroll 12s linear infinite;
+}
+
+.slide {
+  min-width: 100%;
+  text-align: center;
+  padding: 20px;
+  color: limegreen;
+  font-size: 1.5rem;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  33% { transform: translateX(-100%); }
+  66% { transform: translateX(-200%); }
+  100% { transform: translateX(0); }
+}

@@ -46,3 +46,29 @@ function toggleDashboard() {
     dash.style.display = "none";
   }
 }
+
+
+function playVoice() {
+  const message = new SpeechSynthesisUtterance("Bienvenue dans le portail sensoriel RAUN ΔFEU. La conscience te guide.");
+  message.lang = "fr-FR";
+  speechSynthesis.speak(message);
+}
+
+function startVoiceCommand() {
+  if (!('webkitSpeechRecognition' in window)) {
+    alert("Reconnaissance vocale non supportée sur ce navigateur.");
+    return;
+  }
+  const rec = new webkitSpeechRecognition();
+  rec.lang = "fr-FR";
+  rec.onresult = function(event) {
+    let result = event.results[0][0].transcript.toLowerCase();
+    if (result.includes("wake") || result.includes("raun")) {
+      alert("🧠 Mot-clé détecté : RAUN WAKE. Accès confirmé.");
+      window.location.href = "admin.html";
+    } else {
+      alert("Commande non reconnue. Essaie encore.");
+    }
+  };
+  rec.start();
+}
