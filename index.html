@@ -19,5 +19,17 @@
       <a href="admin.html" class="btn">🛡️ Portail Admin</a>
     </div>
   </div>
+
+<div class="features">
+  <button class="btn" onclick="launchScanner()">🔬 Scanner ADN</button>
+  <button class="btn" onclick="startAI()">🤖 Assistant RAUN</button>
+</div>
+
+<div id="ai-box" style="display:none; margin-top:20px;">
+  <textarea id="ai-log" rows="8" style="width:90%; font-family:monospace;"></textarea><br>
+  <input type="text" id="ai-input" placeholder="Parle à RAUN ΔFEU..." style="width:60%;" />
+  <button onclick="sendAI()">Envoyer</button>
+</div>
+
 </body>
 </html>
