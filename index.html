@@ -86,34 +86,27 @@
     <a href="mailto:rachid@example.com">Email</a>
     <a id="adminLink" class="visible" style="display:none;" href="admin.html">🔒 Admin</a>
   </div>
-  <script>
-    function checkPassword(event) {
-      if (event.key === 'Enter') {
-        const input = event.target.value;
-        if (input === 'globalcode7676') {
-          document.getElementById('adminLink').style.display = 'inline-block';
-        } else {
-          alert('Mot de passe incorrect.');
-        }
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
+  <script>document.addEventListener("DOMContentLoaded", function () {
       const canvas = document.getElementById("matrix");
       const ctx = canvas.getContext("2d");
 
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
 
       const letters = "01*".split("");
       const fontSize = 16;
-      const columns = Math.floor(canvas.width / fontSize);
-      const drops = Array(columns).fill(1);
+      let columns = Math.floor(canvas.width / fontSize);
+      let drops = Array(columns).fill(1);
 
       function draw() {
         ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#0F0";
+        ctx.fillStyle = "#00ff00";
         ctx.font = fontSize + "px monospace";
 
         for (let i = 0; i < drops.length; i++) {
@@ -130,7 +123,17 @@
       }
 
       draw();
-    });
-  </script>
+
+      document.querySelector('input[type="password"]').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          const input = event.target.value;
+          if (input === 'globalcode7676') {
+            document.getElementById('adminLink').classList.add('visible');
+          } else {
+            alert('Mot de passe incorrect.');
+          }
+        }
+      });
+    });</script>
 </body>
 </html>
