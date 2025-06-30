@@ -2,84 +2,94 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Portail de RAUN ΨFEU</title>
-  <style>
-    body {
-      background: black;
-      color: lime;
-      font-family: monospace;
-      text-align: center;
-      overflow-x: hidden;
-      background-image: url('matrix-bg.gif');
-      background-size: cover;
-    }
-    h1, h2 {
-      text-shadow: 0 0 8px lime;
-    }
-    img {
-      border-radius: 50%;
-      border: 4px solid lime;
-      width: 150px;
-      height: 150px;
-    }
-    .secret {
-      margin-top: 20px;
-    }
-    .hidden-btns {
-      display: none;
-      margin-top: 20px;
-    }
-    input, button {
-      font-size: 1.2em;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid lime;
-      background: black;
-      color: lime;
-      margin: 5px;
-    }
-    .link-icons {
-      margin-top: 30px;
-    }
-    .link-icons a {
-      margin: 0 10px;
-      font-size: 1.1em;
-      color: lime;
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Portail RAUN ΔFEU</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            background-image: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif');
+            background-size: cover;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 0 0 10px #00ff00;
+            margin-top: 1em;
+        }
+        .photo {
+            border: 4px solid #00ff00;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            display: block;
+        }
+        .quote {
+            font-style: italic;
+            font-size: 1.5em;
+            color: #00ff00;
+            text-shadow: 0 0 8px #00ff00;
+        }
+        .input-section {
+            margin: 20px auto;
+        }
+        input[type="password"] {
+            padding: 10px;
+            width: 300px;
+            border: 2px solid #00ff00;
+            background: black;
+            color: #00ff00;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: black;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .hidden-links {
+            display: none;
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            margin: 0 10px;
+            color: #00ff00;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-  <h1>ISMAILI RACHID - ΔFEU - Ψ - UN</h1>
-  <img src="photo.jpg" alt="Photo" />
-  <h2>“Je suis vivant en conscience. Et nul ne peut éteindre ce que je suis.”</h2>
-
-  <div class="secret">
-    <input type="password" id="accessCode" placeholder="Entrez le code secret..." />
-    <button onclick="verifyCode()">Accès</button>
-  </div>
-
-  <div class="hidden-btns" id="adminBtns">
-    <button onclick="window.open('https://rachid-ismaili.github.io/raun-site/admin.html', '_blank')">Admin</button>
-    <button onclick="window.open('https://rachid-ismaili.github.io/raun-site/firestore/data', '_blank')">Firestore</button>
-  </div>
-
-  <div class="link-icons">
-    <a href="mailto:youremail@example.com">📧 Email</a>
-    <a href="https://wa.me/yourwhatsapplink" target="_blank">💬 WhatsApp</a>
-    <a href="https://linkedin.com/in/yourprofile" target="_blank">🔗 LinkedIn</a>
-  </div>
-
-  <script>
-    function verifyCode() {
-      const code = document.getElementById('accessCode').value;
-      if (code === 'globalcode7676') {
-        document.getElementById('adminBtns').style.display = 'block';
-      } else {
-        alert('Code incorrect');
-      }
-    }
-  </script>
+    <h1>ISMAILI RACHID - ΔFEU - Ψ - UN</h1>
+    <img src="https://i.ibb.co/wNTn13v/pp.png" alt="Photo" class="photo">
+    <p class="quote">“Je suis vivant en conscience. Et nul ne peut éteindre ce que je suis.”</p>
+    <div class="input-section">
+        <input type="password" id="accessCode" placeholder="Entrez le code secret...">
+        <button onclick="checkAccess()">Accès</button>
+    </div>
+    <div class="social-links">
+        <a href="mailto:someone@example.com">📧 Email</a>
+        <a href="https://wa.me/1234567890">💬 WhatsApp</a>
+        <a href="https://www.linkedin.com">🔗 LinkedIn</a>
+    </div>
+    <div class="hidden-links" id="protectedLinks">
+        <br>
+        <a href="https://rachid-ismaili.github.io/raun-site/admin.html">🛡️ Admin</a> |
+        <a href="https://rachid-ismaili.github.io/raun-site/firestore.html">📁 Firestore</a>
+    </div>
+    <script>
+        function checkAccess() {
+            const code = document.getElementById('accessCode').value;
+            if (code === "globalcode7676") {
+                document.getElementById('protectedLinks').style.display = 'block';
+            } else {
+                alert("Code incorrect.");
+            }
+        }
+    </script>
 </body>
 </html>
