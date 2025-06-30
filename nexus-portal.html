@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAUN ΔFEU - NEXUS PORTAL</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      color: #00ff00;
+      background: black;
+      overflow: hidden;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 2.5em;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px #0f0; }
+      50% { text-shadow: 0 0 20px #0f0, 0 0 30px #0f0; }
+      100% { text-shadow: 0 0 10px #0f0; }
+    }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 1.2em;
+      width: 300px;
+      border: 2px solid #00ff00;
+      background: black;
+      color: #00ff00;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #00ff00;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+  <div class="content">
+    <h1>🔐 RAUN ΔFEU - NEXUS</h1>
+    <p>Entre le code secret pour franchir le portail...</p>
+    <input type="password" id="code" placeholder="Code secret..." />
+    <br />
+    <button onclick="verifierCode()">Entrer</button>
+    <div class="error" id="erreur"></div>
+  </div>
+
+  <script>
+    function verifierCode() {
+      const code = document.getElementById('code').value;
+      if (code === "globalcode7676") {
+        window.location.href = "admin-panel.html";
+      } else {
+        document.getElementById('erreur').textContent = "Code incorrect, essaie encore...";
+      }
+    }
+
+    // Matrix effect
+    var c = document.getElementById("matrix");
+    var ctx = c.getContext("2d");
+
+    c.height = window.innerHeight;
+    c.width = window.innerWidth;
+
+    var matrix = "01".split("");
+    var font_size = 14;
+    var columns = c.width / font_size;
+    var drops = [];
+    for (var x = 0; x < columns; x++) drops[x] = 1;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, c.width, c.height);
+
+      ctx.fillStyle = "#0F0";
+      ctx.font = font_size + "px arial";
+      for (var i = 0; i < drops.length; i++) {
+        var text = matrix[Math.floor(Math.random() * matrix.length)];
+        ctx.fillText(text, i * font_size, drops[i] * font_size);
+        if (drops[i] * font_size > c.height && Math.random() > 0.975)
+          drops[i] = 0;
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 35);
+  </script>
+</body>
+</html>
