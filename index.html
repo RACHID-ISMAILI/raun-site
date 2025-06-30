@@ -1,106 +1,85 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>RAUN ΔFEU - NEXUS</title>
+  <meta charset="UTF-8" />
+  <title>Portail de RAUN ΨFEU</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
       background: black;
-      color: #00ff00;
-      font-family: 'Courier New', Courier, monospace;
+      color: lime;
+      font-family: monospace;
       text-align: center;
-      overflow: hidden;
+      overflow-x: hidden;
+      background-image: url('matrix-bg.gif');
+      background-size: cover;
     }
-    h1 {
-      font-size: 3em;
-      text-shadow: 0 0 20px #00ff00;
-      animation: pulse 2s infinite;
-      margin-top: 80px;
+    h1, h2 {
+      text-shadow: 0 0 8px lime;
     }
-    p {
-      font-size: 1.3em;
-      margin-top: 20px;
-      animation: pulse 3s infinite;
-    }
-    .profile {
-      width: 140px;
-      height: 140px;
+    img {
       border-radius: 50%;
+      border: 4px solid lime;
+      width: 150px;
+      height: 150px;
+    }
+    .secret {
+      margin-top: 20px;
+    }
+    .hidden-btns {
+      display: none;
+      margin-top: 20px;
+    }
+    input, button {
+      font-size: 1.2em;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid lime;
+      background: black;
+      color: lime;
+      margin: 5px;
+    }
+    .link-icons {
       margin-top: 30px;
-      border: 3px solid #00ff00;
-      object-fit: cover;
     }
-    .btn {
-      margin-top: 30px;
-      padding: 10px 20px;
-      background: #00ff00;
-      color: black;
-      border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #33ff33;
-    }
-    @keyframes pulse {
-      0% { text-shadow: 0 0 5px #00ff00; }
-      50% { text-shadow: 0 0 20px #00ff00; }
-      100% { text-shadow: 0 0 5px #00ff00; }
-    }
-    canvas.matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+    .link-icons a {
+      margin: 0 10px;
+      font-size: 1.1em;
+      color: lime;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-<canvas class="matrix"></canvas>
-<h1>🚀 Bienvenue dans le Nexus</h1>
-<img src="photo.jpg" alt="Rachid Ismaili" class="profile" />
-<p><strong>ISMAILI RACHID – ∆FEU – Ψ – UN</strong></p>
-<p>"Je suis vivant en conscience. Et nul ne peut éteindre ce que je suis."</p>
-<button class="btn" onclick="location.href='admin.html'">🔐 Admin Accès</button>
+  <h1>ISMAILI RACHID - ΔFEU - Ψ - UN</h1>
+  <img src="photo.jpg" alt="Photo" />
+  <h2>“Je suis vivant en conscience. Et nul ne peut éteindre ce que je suis.”</h2>
 
-<script>
-  const canvas = document.querySelector('.matrix');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  <div class="secret">
+    <input type="password" id="accessCode" placeholder="Entrez le code secret..." />
+    <button onclick="verifyCode()">Accès</button>
+  </div>
 
-  let matrix = "01";
-  matrix = matrix.split("");
+  <div class="hidden-btns" id="adminBtns">
+    <button onclick="window.open('https://rachid-ismaili.github.io/raun-site/admin.html', '_blank')">Admin</button>
+    <button onclick="window.open('https://rachid-ismaili.github.io/raun-site/firestore/data', '_blank')">Firestore</button>
+  </div>
 
-  const font_size = 14;
-  const columns = canvas.width / font_size;
-  const drops = Array(Math.floor(columns)).fill(1);
+  <div class="link-icons">
+    <a href="mailto:youremail@example.com">📧 Email</a>
+    <a href="https://wa.me/yourwhatsapplink" target="_blank">💬 WhatsApp</a>
+    <a href="https://linkedin.com/in/yourprofile" target="_blank">🔗 LinkedIn</a>
+  </div>
 
-  function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#0F0";
-    ctx.font = font_size + "px monospace";
-
-    for(let i = 0; i < drops.length; i++) {
-      const text = matrix[Math.floor(Math.random() * matrix.length)];
-      ctx.fillText(text, i * font_size, drops[i] * font_size);
-
-      if(drops[i] * font_size > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
+  <script>
+    function verifyCode() {
+      const code = document.getElementById('accessCode').value;
+      if (code === 'globalcode7676') {
+        document.getElementById('adminBtns').style.display = 'block';
+      } else {
+        alert('Code incorrect');
       }
-
-      drops[i]++;
     }
-  }
-
-  setInterval(draw, 33);
-</script>
+  </script>
 </body>
 </html>
