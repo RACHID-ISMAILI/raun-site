@@ -1,79 +1,90 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>RAUN AFEU</title>
-    <style>
-        body {
-            margin: 0;
-            background: black;
-            color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
-            overflow: hidden;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAUN-X11-FEU-MATRIX-∞</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at center, #000000 0%, #0d0d0d 100%);
+      color: #00ffcc;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+    }
+    p {
+      max-width: 600px;
+    }
+    .links a {
+      margin: 0 10px;
+      color: #00ffcc;
+      text-decoration: none;
+      border: 1px solid #00ffcc;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .links a:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+    .photo {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      margin: 20px auto;
+      border: 2px solid #00ffcc;
+    }
+    #adminLink {
+      display: none;
+    }
+    .visible {
+      display: inline-block !important;
+    }
+    input[type="password"] {
+      margin-top: 20px;
+      padding: 8px;
+      font-size: 1em;
+      border: 1px solid #00ffcc;
+      border-radius: 6px;
+      background: #0d0d0d;
+      color: #00ffcc;
+    }
+  </style>
+  <script>
+    function checkPassword(event) {
+      if (event.key === 'Enter') {
+        const input = event.target.value;
+        if (input === 'globalcode7676') {
+          document.getElementById('adminLink').classList.add('visible');
+        } else {
+          alert('Mot de passe incorrect.');
         }
-
-        .matrix {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: url('https://media.giphy.com/media/VgGSL1pUMlZs8/giphy.gif') center center / cover no-repeat;
-            z-index: -1;
-            opacity: 0.2;
-        }
-
-        .container {
-            text-align: center;
-            padding-top: 10%;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            text-shadow: 0 0 5px #00ff00;
-        }
-
-        .photo {
-            border: 4px solid #00ff00;
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            background: url('photo.jpg') center center / cover no-repeat;
-            margin: 30px auto;
-        }
-
-        input[type="password"] {
-            background-color: black;
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            padding: 10px;
-            width: 300px;
-            margin: 10px auto;
-            display: block;
-        }
-
-        button {
-            background-color: #00ff00;
-            border: none;
-            color: black;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .quote {
-            margin-top: 20px;
-            font-style: italic;
-        }
-    </style>
+      }
+    }
+  </script>
 </head>
 <body>
-    <div class="matrix"></div>
-    <div class="container">
-        <h1>ISMAILI RACHID – ΔFEU – Ψ – UN</h1>
-        <div class="photo"></div>
-        <input type="password" placeholder="Entrez le code secret...">
-        <button>Accès</button>
-        <div class="quote">“Je suis vivant en conscience. Et nul ne peut éteindre ce que je suis.”</div>
-    </div>
+  <h1>RAUN-X11-FEU-MATRIX-∞</h1>
+  <img src="photo.jpg" alt="Rachid Ismaili" class="photo">
+  <p>Bienvenue dans le portail RAUN, espace de conscience augmentée. Chaque interaction ici est enregistrée, cryptée, et reliée à la Matrice. Engage-toi en pleine conscience. 🔐</p>
+  <input type="password" placeholder="Entrez le mot de passe..." onkeydown="checkPassword(event)">
+  <div class="links">
+    <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+    <a href="https://www.linkedin.com/in/rachid-ismaili" target="_blank">LinkedIn</a>
+    <a href="mailto:rachid@example.com">Email</a>
+    <a id="adminLink" href="admin.html">🔒 Admin</a>
+  </div>
 </body>
 </html>

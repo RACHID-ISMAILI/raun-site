@@ -1,23 +1,59 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>RAUN ΔFEU – Admin</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin RAUN 🔐</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ffcc;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+    p {
+      max-width: 600px;
+      margin: 20px;
+    }
+    .alert {
+      border: 1px solid #00ffcc;
+      padding: 10px;
+      border-radius: 8px;
+      background: #0a0a0a;
+    }
+    .secret-button {
+      margin-top: 20px;
+      background-color: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .secret-button:hover {
+      background-color: #009980;
+    }
+  </style>
+  <script>
+    function openNexus() {
+      alert("Portail NEXUS verrouillé pour le moment. Déverrouillage prévu: août. Contacte Christopher Delgado pour en savoir plus.");
+    }
+  </script>
 </head>
-<body onkeydown="activateAccess(event)">
-  <div id="trigger-zone">
-    <h1>Bienvenue sur RAUN ΔFEU</h1>
-    <p>Tape le code secret pour entrer...</p>
-  </div>
-
-  <div id="terminal" style="display:none;">
-    <h2>ΔFEU TERMINAL</h2>
-    <input type="text" id="command" placeholder="Tape une commande..." />
-    <button onclick="runCommand()">Exécuter</button>
-    <pre id="output"></pre>
-  </div>
-
-  <script src="script.js"></script>
+<body>
+  <h1>Admin Access – RAUN Zone 🔐</h1>
+  <p class="alert">Bienvenue dans la zone confidentielle RAUN. Seules les consciences éveillées peuvent naviguer ici. Chaque action est enregistrée.</p>
+  <p>🔥 Code mémoire actif : <strong>RAUN-X11-FEU-MATRIX-∞</strong></p>
+  <button class="secret-button" onclick="openNexus()">🔓 Déverrouiller Delgado NEXUS</button>
 </body>
 </html>
