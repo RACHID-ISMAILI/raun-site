@@ -1,1 +1,141 @@
-<html><body><h1>Erreur: contenu manquant</h1></body></html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RAUN-X11-FEU-MATRIX-∞</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #00ffcc;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    h1, p, .photo, .links, input[type="password"] {
+      z-index: 1;
+      position: relative;
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .photo {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      margin: 20px auto;
+      border: 2px solid #00ffcc;
+    }
+    .links a {
+      margin: 0 10px;
+      color: #00ffcc;
+      text-decoration: none;
+      border: 1px solid #00ffcc;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .links a:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+    input[type="password"] {
+      margin-top: 20px;
+      padding: 8px;
+      font-size: 1em;
+      border: 1px solid #00ffcc;
+      border-radius: 6px;
+      background: #0d0d0d;
+      color: #00ffcc;
+    }
+    #adminLink { display: none; }
+    .visible { display: inline-block !important; }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      .photo { width: 80px; height: 80px; }
+      .links a { padding: 6px 10px; font-size: 0.9em; }
+      input[type="password"] { width: 80%; font-size: 0.9em; }
+    }
+  </style>
+  <script>
+    function checkPassword(event) {
+      if (event.key === 'Enter') {
+        if (event.target.value === 'globalcode7676') {
+          document.getElementById('adminLink').classList.add('visible');
+        } else {
+          alert('Mot de passe incorrect.');
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const canvas = document.getElementById("matrix");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const letters = "01*".split("");
+      const fontSize = 14;
+      const columns = canvas.width / fontSize;
+      const drops = Array(Math.floor(columns)).fill(1);
+
+      function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#00ff00";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = letters[Math.floor(Math.random() * letters.length)];
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+    });
+  </script>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+  <h1 class="fade-in">RAUN-X11-FEU-MATRIX-∞</h1>
+  <img src="photo.jpg" alt="Rachid Ismaili" class="photo fade-in">
+  <p class="fade-in">Bienvenue dans le portail RAUN. Chaque action est tracée dans le noyau de la Matrice. Reste éveillé. 🔐</p>
+  <input type="password" placeholder="Entrez le mot de passe..." onkeydown="checkPassword(event)" class="fade-in">
+  <div class="links fade-in">
+    <a href="https://wa.me/212650020464" target="_blank">WhatsApp</a>
+    <a href="https://www.linkedin.com/in/rachid-ismaili-68b61a27?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
+    <a href="mailto:rachid@example.com">Email</a>
+    <a id="adminLink" href="admin.html">🔒 Admin</a>
+  </div>
+</body>
+</html>
