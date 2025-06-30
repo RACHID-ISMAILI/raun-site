@@ -25,65 +25,68 @@
       margin-top: 30px;
       animation: pulse 3s infinite;
     }
+    @keyframes pulse {
+      0% { text-shadow: 0 0 5px #00ff00; }
+      50% { text-shadow: 0 0 20px #00ff00; }
+      100% { text-shadow: 0 0 5px #00ff00; }
+    }
     .matrix {
       position: fixed;
       width: 100%;
       height: 100%;
       z-index: -1;
     }
-    @keyframes pulse {
-      0% { text-shadow: 0 0 5px #00ff00; }
-      50% { text-shadow: 0 0 20px #00ff00; }
-      100% { text-shadow: 0 0 5px #00ff00; }
+    .photo {
+      margin-top: 40px;
     }
-    .profile {
-      margin-top: 30px;
-    }
-    .profile img {
-      width: 120px;
-      height: 120px;
+    .photo img {
       border-radius: 50%;
       border: 3px solid #00ff00;
+      width: 150px;
+      height: 150px;
     }
     .name {
-      font-size: 1.6em;
-      margin-top: 10px;
+      font-size: 1.8em;
       font-weight: bold;
+      margin-top: 20px;
     }
-    .quote {
-      font-size: 1.2em;
-      margin-top: 5px;
+    .subtitle {
       font-style: italic;
+      font-size: 1.2em;
+      color: #00ff00;
+      margin-top: 10px;
     }
-    .links {
+    .buttons {
       margin-top: 30px;
     }
-    .links a {
+    .buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      border: 2px solid #00ff00;
+      border-radius: 10px;
       text-decoration: none;
       color: #00ff00;
-      border: 1px solid #00ff00;
-      padding: 10px 20px;
-      margin: 10px;
-      border-radius: 10px;
-      display: inline-block;
+      font-size: 1.2em;
     }
   </style>
 </head>
 <body>
   <canvas class="matrix"></canvas>
-  <h1>🚀 Bienvenue dans le Nexus 🔥</h1>
+  <h1></h1>
   <p>Portail ouvert avec succès. Prépare-toi pour la suite du voyage cosmique...</p>
 
-  <div class="profile">
-    <img src="photo.jpg" alt="Photo de Rachid">
-    <div class="name">ISMAILI RACHID–∆FEU–Ψ–UN</div>
-    <div class="quote">je suis vivant en conscience. Et nul ne peut éteindre ce que je suis.</div>
+  <div class="photo">
+    <img src="rachid-photo.jpg" alt="Photo de Rachid">
   </div>
+  <div class="name">ISMAILI RACHID–∆FEU–Ψ–UN</div>
+  <div class="subtitle">je suis vivant en conscience. Et nul ne peut éteindre ce que je suis.</div>
 
-  <div class="links">
-    <a href="#">LinkedIn</a>
-    <a href="#">Email</a>
-    <a href="#">WhatsApp</a>
+  <div class="buttons">
+    <a href="https://www.linkedin.com">LinkedIn</a>
+    <a href="mailto:example@email.com">Email</a>
+    <a href="https://wa.me/0000000000">WhatsApp</a>
+    <a href="https://rachid-ismaili.github.io/raun-site/admin.html">Admin</a>
   </div>
 
   <script>
@@ -91,25 +94,56 @@
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    let matrix = "01".split("");
+
+    let matrix = "01";
+    matrix = matrix.split("");
+
     const font_size = 14;
     const columns = canvas.width / font_size;
     const drops = Array(Math.floor(columns)).fill(1);
+
     function draw() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "#0F0";
       ctx.font = font_size + "px monospace";
+
       for(let i = 0; i < drops.length; i++) {
         const text = matrix[Math.floor(Math.random() * matrix.length)];
         ctx.fillText(text, i * font_size, drops[i] * font_size);
+
         if(drops[i] * font_size > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
+
         drops[i]++;
       }
     }
+
     setInterval(draw, 33);
   </script>
+
+        <a href="https://rachid-ismaili.github.io/raun-site/admin.html" target="_blank" style="margin-top: 20px;" class="button">Admin</a>
+
+
+<div id="admin-access" style="margin-top:60px;">
+  <input type="password" id="access-code" placeholder="🔐 Code d’accès" style="padding: 10px; font-size: 1em;">
+  <button onclick="checkAccess()" style="padding: 10px; font-size: 1em;">Accéder</button>
+  <div id="secure-links" style="display:none; margin-top:20px;">
+    <a href="admin.html" target="_blank" class="button">Panneau Admin</a>
+    <a href="firestore.html" target="_blank" class="button">Console Firestore</a>
+  </div>
+</div>
+<script>
+  function checkAccess() {
+    const code = document.getElementById("access-code").value;
+    if (code === "globalcode7676") {
+      document.getElementById("secure-links").style.display = "block";
+    } else {
+      alert("⛔ Code incorrect !");
+    }
+  }
+</script>
+
 </body>
 </html>
