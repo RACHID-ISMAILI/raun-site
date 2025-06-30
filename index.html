@@ -3,89 +3,78 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Portail RAUN ΔFEU</title>
+    <title>Portail Matrix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: black;
-            color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-            background-image: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif');
+            margin: 0;
+            font-family: 'Share Tech Mono', monospace;
+            color: #00FF00;
+            background: black url('matrix.gif') repeat;
             background-size: cover;
+            overflow: hidden;
+            text-align: center;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #00FF00;
+            margin: 20px auto;
         }
         h1 {
             font-size: 3em;
-            text-shadow: 0 0 10px #00ff00;
-            margin-top: 1em;
+            text-shadow: 0 0 10px #00FF00;
         }
-        .photo {
-            border: 4px solid #00ff00;
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
-            display: block;
+        p.quote {
+            font-size: 1.3em;
+            color: #00FF00;
+            text-shadow: 0 0 5px #00FF00;
         }
-        .quote {
-            font-style: italic;
-            font-size: 1.5em;
-            color: #00ff00;
-            text-shadow: 0 0 8px #00ff00;
-        }
-        .input-section {
-            margin: 20px auto;
-        }
-        input[type="password"] {
+        input[type="password"], button {
+            font-size: 1em;
             padding: 10px;
-            width: 300px;
-            border: 2px solid #00ff00;
-            background: black;
-            color: #00ff00;
-        }
-        button {
-            padding: 10px 20px;
+            margin: 10px;
             background-color: black;
-            color: #00ff00;
-            border: 2px solid #00ff00;
-            cursor: pointer;
-            margin-left: 10px;
+            color: #00FF00;
+            border: 2px solid #00FF00;
         }
-        .hidden-links {
-            display: none;
-        }
-        .social-links {
-            margin-top: 20px;
-        }
-        .social-links a {
-            margin: 0 10px;
-            color: #00ff00;
+        .links a {
+            margin: 10px;
+            color: #00FF00;
             text-decoration: none;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
     <h1>ISMAILI RACHID - ΔFEU - Ψ - UN</h1>
-    <img src="https://i.ibb.co/wNTn13v/pp.png" alt="Photo" class="photo">
+    <img src="photo.jpg" alt="Photo" class="profile-img">
     <p class="quote">“Je suis vivant en conscience. Et nul ne peut éteindre ce que je suis.”</p>
-    <div class="input-section">
-        <input type="password" id="accessCode" placeholder="Entrez le code secret...">
-        <button onclick="checkAccess()">Accès</button>
+
+    <div>
+        <input type="password" id="code" placeholder="Entrez le code secret...">
+        <button onclick="verifierCode()">Accès</button>
     </div>
-    <div class="social-links">
-        <a href="mailto:someone@example.com">📧 Email</a>
-        <a href="https://wa.me/1234567890">💬 WhatsApp</a>
-        <a href="https://www.linkedin.com">🔗 LinkedIn</a>
+
+    <div class="hidden" id="adminBtns">
+        <button onclick="location.href='admin.html'">Portail Admin</button>
+        <button onclick="location.href='firestore.html'">Firestore Data</button>
     </div>
-    <div class="hidden-links" id="protectedLinks">
-        <br>
-        <a href="https://rachid-ismaili.github.io/raun-site/admin.html">🛡️ Admin</a> |
-        <a href="https://rachid-ismaili.github.io/raun-site/firestore.html">📁 Firestore</a>
+
+    <div class="links">
+        <a href="mailto:example@mail.com">📧 Email</a>
+        <a href="https://wa.me/123456789">💬 WhatsApp</a>
+        <a href="https://www.linkedin.com/in/yourprofile">🔗 LinkedIn</a>
     </div>
+
     <script>
-        function checkAccess() {
-            const code = document.getElementById('accessCode').value;
+        function verifierCode() {
+            const code = document.getElementById("code").value;
             if (code === "globalcode7676") {
-                document.getElementById('protectedLinks').style.display = 'block';
+                document.getElementById("adminBtns").classList.remove("hidden");
             } else {
                 alert("Code incorrect.");
             }
