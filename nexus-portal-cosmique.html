@@ -1,122 +1,75 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>RAUN ΔFEU - NEXUS</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
       background: black;
       color: #00ff00;
       font-family: 'Courier New', Courier, monospace;
+      text-align: center;
       overflow: hidden;
     }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-
-    .container {
-      position: relative;
-      text-align: center;
-      padding-top: 10vh;
-      animation: pulse 3s infinite;
-    }
-
     h1 {
       font-size: 3em;
       text-shadow: 0 0 20px #00ff00;
+      animation: pulse 2s infinite;
+      margin-top: 100px;
     }
-
     p {
-      font-size: 1.2em;
+      font-size: 1.4em;
+      margin-top: 30px;
+      animation: pulse 3s infinite;
     }
-
-    input[type="password"] {
-      padding: 10px;
-      font-size: 1.2em;
-      width: 300px;
-      text-align: center;
-      border: 2px solid #00ff00;
-      background: #000;
-      color: #00ff00;
-      margin-top: 20px;
-    }
-
-    button {
-      padding: 10px 20px;
-      margin-top: 20px;
-      font-size: 1em;
-      background-color: #00ff00;
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #1fff1f;
-    }
-
-    .error {
-      color: red;
-      margin-top: 20px;
-    }
-
     @keyframes pulse {
-      0% { text-shadow: 0 0 10px #0f0, 0 0 20px #0f0; }
-      50% { text-shadow: 0 0 30px #0f0, 0 0 60px #0f0; }
-      100% { text-shadow: 0 0 10px #0f0, 0 0 20px #0f0; }
+      0% { text-shadow: 0 0 5px #00ff00; }
+      50% { text-shadow: 0 0 20px #00ff00; }
+      100% { text-shadow: 0 0 5px #00ff00; }
+    }
+    .matrix {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
   </style>
 </head>
 <body>
-  <canvas id="matrix"></canvas>
-  <div class="container">
-    <h1>🚀 RAUN ΔFEU - NEXUS 🔥</h1>
-    <p>Entre le <strong>code secret</strong> pour franchir le portail...</p>
-    <input type="password" id="code" placeholder="Code secret..." />
-    <br />
-    <button onclick="verifierCode()">Entrer</button>
-    <div class="error" id="erreur"></div>
-  </div>
+  <canvas class="matrix"></canvas>
+  <h1>🚀 Bienvenue dans le Nexus 🔥</h1>
+  <p>Portail ouvert avec succès. Prépare-toi pour la suite du voyage cosmique...</p>
 
   <script>
-    function verifierCode() {
-      const code = document.getElementById('code').value;
-      const motDePasse = "globalcode7676";
-      if (code === motDePasse) {
-        window.location.href = "cosmic-landing.html";
-      } else {
-        document.getElementById('erreur').textContent = "Code incorrect. Essaie encore guerrier !";
-      }
-    }
-
-    const canvas = document.getElementById('matrix');
+    const canvas = document.querySelector('.matrix');
     const ctx = canvas.getContext('2d');
-    canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
-    const matrix = "01";
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const drops = [];
-    for(let x = 0; x < columns; x++) drops[x] = 1;
+    canvas.height = window.innerHeight;
+
+    let matrix = "01";
+    matrix = matrix.split("");
+
+    const font_size = 14;
+    const columns = canvas.width / font_size;
+    const drops = Array(Math.floor(columns)).fill(1);
 
     function draw() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+
       ctx.fillStyle = "#0F0";
-      ctx.font = fontSize + "px monospace";
+      ctx.font = font_size + "px monospace";
+
       for(let i = 0; i < drops.length; i++) {
         const text = matrix[Math.floor(Math.random() * matrix.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if(drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+        ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+        if(drops[i] * font_size > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
+        }
+
         drops[i]++;
       }
     }
