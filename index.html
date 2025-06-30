@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RAUN ΔFEU - Accueil</title>
+  <title>Portail Admin - RAUN ΔFEU</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
@@ -11,53 +11,78 @@
       color: #00ff00;
       font-family: 'Courier New', Courier, monospace;
       text-align: center;
-      padding: 30px;
+      padding: 40px;
     }
     h1 {
-      font-size: 2.5em;
-    }
-    p {
-      font-size: 1.2em;
+      font-size: 2.2em;
       margin-bottom: 20px;
     }
-    .btn {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 1.1em;
-      background-color: #00ff00;
-      color: black;
-      border: none;
-      cursor: pointer;
-      border-radius: 8px;
-      text-decoration: none;
-      display: inline-block;
+    input[type="password"] {
+      padding: 10px;
+      font-size: 1.2em;
+      width: 300px;
+      text-align: center;
+      border: 2px solid #00ff00;
+      background: #000;
+      color: #00ff00;
+      margin-bottom: 20px;
     }
-    .btn:hover {
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #00ff00;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
       background-color: #1fff1f;
     }
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin: 20px 0;
-      object-fit: cover;
+    .error {
+      color: red;
+      margin-top: 20px;
+    }
+    .linkedin {
+      margin-top: 60px;
+      font-size: 1em;
+      background: #000;
+      padding: 10px 20px;
       border: 2px solid #00ff00;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .linkedin a {
+      color: #00ff00;
+      text-decoration: none;
+    }
+    .linkedin a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <h1>🔥 Bienvenue dans l'univers RAUN ΔFEU 🔥</h1>
-  <img src="fa7cb545-3de5-4d4a-811d-5a298f686789.jpg" alt="Photo de Rachid" class="profile-pic">
-  <p>ISMAILI RACHID - ΔFEU - ψ - UN</p>
-  <p>"Je ne cherche pas des réponses. Je cherche la vibration derrière la réponse."</p>
-  <div>
-    <a class="btn" href="index.html">✨ Entrer dans RAUN ΔFEU</a>
-    <a class="btn" href="mailto:ismaili.rachid@example.com">📧 Email</a>
-    <a class="btn" href="https://wa.me/212650020464">📞 WhatsApp</a>
-    <a class="btn" href="capsules-lean.html">🔊 Capsules Lean</a>
-    <a class="btn" href="capsules-privees.html">🔐 Capsules Privées</a>
-    <a class="btn" href="secret.html">🔒 Portail Admin</a>
-    <a class="btn" href="https://youtube.com/@raunmatrix">🎥 YouTube</a>
+  <h1>🔐 Bienvenue sur RAUN ΔFEU</h1>
+  <p>Tape <strong>le code secret</strong> pour entrer...</p>
+  <input type="password" id="code" placeholder="Entrez le code..." />
+  <br />
+  <button onclick="verifierCode()">Entrer</button>
+  <div class="error" id="erreur"></div>
+
+  <div class="linkedin">
+    <a href="https://www.linkedin.com/in/rachid-ismaili-68b61a27" target="_blank">🔗 Accéder à mon LinkedIn</a>
   </div>
+
+  <script>
+    function verifierCode() {
+      const code = document.getElementById('code').value;
+      const motDePasse = "globalcode7676";
+      if (code === motDePasse) {
+        window.location.href = "admin-panel.html";
+      } else {
+        document.getElementById('erreur').textContent = "Code incorrect. Essaie encore guerrier !";
+      }
+    }
+  </script>
 </body>
 </html>
