@@ -3,51 +3,62 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ISMAILI RACHID–∆FEU–Ψ–UN</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
-    .links {
-      margin-top: 80px !important;
-    }
     body {
       margin: 0;
       padding: 0;
-      background: #000;
+      background: black;
       color: #00ffcc;
       font-family: 'Courier New', Courier, monospace;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: start;
       height: 100vh;
       text-align: center;
       overflow: hidden;
+      position: relative;
     }
     canvas {
       position: fixed;
       top: 0;
       left: 0;
+      z-index: -1;
       width: 100%;
       height: 100%;
-      z-index: -1;
-      pointer-events: none;
     }
-    h1, p, .photo, .links, input[type="password"] {
-  margin-bottom: 60px;
-      z-index: 1;
-      position: relative;
+    h1 {
+      font-size: 2.5em;
+      margin-top: 60px;
+      margin-bottom: 10px;
     }
     .photo {
       border-radius: 50%;
       width: 120px;
       height: 120px;
-      margin: 20px auto;
       border: 2px solid #00ffcc;
+      margin-bottom: 10px;
+    }
+    p {
+      max-width: 600px;
+      margin: 10px 0;
+    }
+    input[type="password"] {
+      margin-top: 10px;
+      padding: 8px;
+      font-size: 1em;
+      border: 1px solid #00ffcc;
+      border-radius: 6px;
+      background: #0d0d0d;
+      color: #00ffcc;
+    }
+    .links {
+      margin-top: 10px;
     }
     .links a {
-      margin-top: 10px;
-
       margin: 0 10px;
       color: #00ffcc;
       text-decoration: none;
@@ -60,42 +71,8 @@
       background: #00ffcc;
       color: #000;
     }
-    input[type="password"] {
-  margin-bottom: 60px;
-      margin-top: 20px;
-      padding: 8px;
-      font-size: 1em;
-      border: 1px solid #00ffcc;
-      border-radius: 6px;
-      background: #0d0d0d;
-      color: #00ffcc;
-    }
-    #adminLink { display: none; }
-    .visible { display: inline-block !important; }
-
-    @media (max-width: 600px) {
-      h1 {
-      margin-top: 60px;
- font-size: 2em; }
-      .photo { width: 80px; height: 80px; }
-      .links a {
-      margin-top: 10px;
- padding: 6px 10px; font-size: 0.9em; }
-      input[type="password"] {
-  margin-bottom: 60px; width: 80%; font-size: 0.9em; }
-    }
   </style>
   <script>
-    function checkPassword(event) {
-      if (event.key === 'Enter') {
-        if (event.target.value === 'globalcode7676') {
-          document.getElementById('adminLink').classList.add('visible');
-        } else {
-          alert('Mot de passe incorrect.');
-        }
-      }
-    }
-
     document.addEventListener("DOMContentLoaded", function () {
       const canvas = document.getElementById("matrix");
       const ctx = canvas.getContext("2d");
@@ -104,27 +81,24 @@
 
       const letters = "01*".split("");
       const fontSize = 14;
-      const columns = canvas.width / fontSize;
-      const drops = Array(Math.floor(columns)).fill(1);
+      const columns = Math.floor(canvas.width / fontSize);
+      const drops = Array(columns).fill(1);
 
       function draw() {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "#00ff00";
         ctx.font = fontSize + "px monospace";
-
         for (let i = 0; i < drops.length; i++) {
           const text = letters[Math.floor(Math.random() * letters.length)];
           ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
           if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
             drops[i] = 0;
           }
           drops[i]++;
         }
-        setTimeout(draw, 100);
+        requestAnimationFrame(draw);
       }
-
       draw();
     });
   </script>
@@ -134,12 +108,11 @@
   <h1>ISMAILI RACHID–∆FEU–Ψ–UN</h1>
   <img src="photo.jpg" alt="Rachid Ismaili" class="photo">
   <p>Bienvenue dans le portail RAUN. Chaque action est tracée dans le noyau de la Matrice. Reste éveillé. 🔐</p>
-  <div style="margin-bottom: 20px;"><input type="password" placeholder="Entrez le mot de passe..." onkeydown="checkPassword(event)">
+  <input type="password" placeholder="Entrez le mot de passe..." onkeydown="checkPassword(event)">
   <div class="links">
     <a href="https://wa.me/212650020464" target="_blank">WhatsApp</a>
     <a href="https://www.linkedin.com/in/rachid-ismaili-68b61a27?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
     <a href="mailto:rachid@example.com">Email</a>
-    <a id="adminLink" href="admin.html">🔒 Admin</a>
   </div>
 </body>
 </html>
