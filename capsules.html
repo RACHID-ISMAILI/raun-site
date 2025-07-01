@@ -2,19 +2,61 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Capsules de Conscience Lean</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Capsules RAUN</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .capsule {
+      border: 1px solid #0f0;
+      padding: 10px;
+      margin-bottom: 15px;
+      background: #111;
+    }
+    .capsule h2 {
+      margin: 0 0 5px 0;
+      font-size: 1.2em;
+      color: #00ffcc;
+    }
+    .capsule p {
+      white-space: pre-wrap;
+    }
+    .capsule time {
+      font-size: 0.8em;
+      color: #888;
+    }
+  </style>
 </head>
-<body style="background-color:black;color:lime;">
-    <h1>🌱 Capsules de Conscience Lean</h1>
-    <input type="text" placeholder="Email"><br>
-    <input type="password" placeholder="Mot de passe"><br>
-    <button>Connexion</button>
-    <h2>Nouvelle Capsule</h2>
-    <input type="text" placeholder="Titre"><br>
-    <textarea placeholder="Contenu..."></textarea><br>
-    <button>Ajouter</button>
-    <h2>Capsules existantes</h2>
+<body>
+  <h1>🧠 Capsules publiées</h1>
+  <div id="capsulesContainer"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("capsulesContainer");
+      const capsules = JSON.parse(localStorage.getItem("capsules") || "[]");
+
+      if (capsules.length === 0) {
+        container.innerHTML = "<p>Aucune capsule pour le moment...</p>";
+        return;
+      }
+
+      capsules.forEach(capsule => {
+        const div = document.createElement("div");
+        div.className = "capsule";
+        div.innerHTML = `
+          <h2>${capsule.title}</h2>
+          <p>${capsule.content}</p>
+          <time>🕒 ${new Date(capsule.date).toLocaleString()}</time>
+        `;
+        container.appendChild(div);
+      });
+    });
+  </script>
 </body>
 </html>
