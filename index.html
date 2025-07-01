@@ -67,7 +67,6 @@
       border-radius: 8px;
       transition: background 0.3s;
     }
-    .visible { display: inline-block !important; }
     .links a:hover {
       background: #00ffcc;
       color: #000;
@@ -84,29 +83,38 @@
     <a href="https://wa.me/212650020464" target="_blank">WhatsApp</a>
     <a href="https://www.linkedin.com/in/rachid-ismaili-68b61a27" target="_blank">LinkedIn</a>
     <a href="mailto:rachid@example.com">Email</a>
-    <a id="adminLink" class="visible" style="display:none;" href="admin.html">🔒 Admin</a>
   </div>
-  <script>document.addEventListener("DOMContentLoaded", function () {
+  <div id="adminWrapper" style="display:none; margin-top: 15px;">
+    <a id="adminLink" href="admin.html" class="links">🔒 Admin</a>
+  </div>
+  <script>
+    function checkPassword(event) {
+      if (event.key === 'Enter') {
+        const input = event.target.value;
+        if (input === 'globalcode7676') {
+          document.getElementById('adminWrapper').style.display = 'block';
+        } else {
+          alert('Mot de passe incorrect.');
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
       const canvas = document.getElementById("matrix");
       const ctx = canvas.getContext("2d");
 
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-
-      window.addEventListener("resize", resizeCanvas);
-      resizeCanvas();
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
       const letters = "01*".split("");
       const fontSize = 16;
-      let columns = Math.floor(canvas.width / fontSize);
-      let drops = Array(columns).fill(1);
+      const columns = Math.floor(canvas.width / fontSize);
+      const drops = Array(columns).fill(1);
 
       function draw() {
         ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#00ff00";
+        ctx.fillStyle = "#0F0";
         ctx.font = fontSize + "px monospace";
 
         for (let i = 0; i < drops.length; i++) {
@@ -123,17 +131,7 @@
       }
 
       draw();
-
-      document.querySelector('input[type="password"]').addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-          const input = event.target.value;
-          if (input === 'globalcode7676') {
-            document.getElementById('adminLink').classList.add('visible');
-          } else {
-            alert('Mot de passe incorrect.');
-          }
-        }
-      });
-    });</script>
+    });
+  </script>
 </body>
 </html>
