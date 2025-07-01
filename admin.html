@@ -1,59 +1,74 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin RAUN 🔐</title>
+  <title>Admin - Publier Capsule</title>
   <style>
     body {
       background-color: #000;
-      color: #00ffcc;
-      font-family: 'Courier New', Courier, monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.5em;
-    }
-    p {
+      color: #0f0;
+      font-family: monospace;
+      padding: 20px;
       max-width: 600px;
-      margin: 20px;
+      margin: auto;
     }
-    .alert {
-      border: 1px solid #00ffcc;
+    input, textarea, button {
+      width: 100%;
+      margin-top: 10px;
       padding: 10px;
-      border-radius: 8px;
-      background: #0a0a0a;
-    }
-    .secret-button {
-      margin-top: 20px;
-      background-color: #00ffcc;
-      color: #000;
-      border: none;
-      padding: 10px 20px;
       font-size: 1em;
-      border-radius: 8px;
+      border: 1px solid #0f0;
+      background: #111;
+      color: #0f0;
+    }
+    button {
       cursor: pointer;
-      transition: background 0.3s;
     }
-    .secret-button:hover {
-      background-color: #009980;
-    }
+    .hidden { display: none; }
   </style>
-  <script>
-    function openNexus() {
-      alert("Portail NEXUS verrouillé pour le moment. Déverrouillage prévu: août. Contacte Christopher Delgado pour en savoir plus.");
-    }
-  </script>
 </head>
 <body>
-  <h1>Admin Access – RAUN Zone 🔐</h1>
-  <p class="alert">Bienvenue dans la zone confidentielle RAUN. Seules les consciences éveillées peuvent naviguer ici. Chaque action est enregistrée.</p>
-  <p>🔥 Code mémoire actif : <strong>RAUN-X11-FEU-MATRIX-∞</strong></p>
-  <button class="secret-button" onclick="openNexus()">🔓 Déverrouiller Delgado NEXUS</button>
+  <h1>🔐 Admin - Capsule RAUN</h1>
+  <input type="password" id="password" placeholder="Mot de passe RAUN" onkeydown="unlock(event)">
+  <div id="editor" class="hidden">
+    <input type="text" id="title" placeholder="Titre de la capsule">
+    <textarea id="content" rows="10" placeholder="Écris ta capsule ici..."></textarea>
+    <button onclick="saveCapsule()">📥 Publier</button>
+    <p id="status"></p>
+  </div>
+  <script>
+    function unlock(e) {
+      if (e.key === "Enter") {
+        if (e.target.value === "globalcode7676") {
+          document.getElementById("editor").classList.remove("hidden");
+          e.target.style.display = "none";
+        } else {
+          alert("Mot de passe incorrect.");
+        }
+      }
+    }
+
+    function saveCapsule() {
+      const title = document.getElementById('title').value.trim();
+      const content = document.getElementById('content').value.trim();
+      const date = new Date().toISOString();
+
+      if (!title || !content) {
+        document.getElementById('status').textContent = "❌ Remplis tous les champs.";
+        return;
+      }
+
+      const capsule = { title, content, date };
+
+      let capsules = JSON.parse(localStorage.getItem("capsules") || "[]");
+      capsules.unshift(capsule);
+      localStorage.setItem("capsules", JSON.stringify(capsules));
+
+      document.getElementById('status').textContent = "✅ Capsule publiée.";
+      document.getElementById('title').value = "";
+      document.getElementById('content').value = "";
+    }
+  </script>
 </body>
 </html>
