@@ -1,43 +1,23 @@
+
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>RAUN PORTAIL</title>
-  <link rel="stylesheet" href="style.css">
+    <title>RAUN SITE</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 36px;
+        }
+    </style>
 </head>
 <body>
-
-  <h1>ISMAILI RACHID–∆FEU–Ψ–UN</h1>
-  <div id="articles"></div>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBzLrEUBrOemOC5exunO1X6UleWlbgA7H0",
-      authDomain: "raun-site.firebaseapp.com",
-      projectId: "raun-site",
-      storageBucket: "raun-site.firebasestorage.app",
-      messagingSenderId: "726026685777",
-      appId: "1:726026685777:web:b29176676060bc12209770"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    async function fetchArticles() {
-      const querySnapshot = await getDocs(collection(db, "articles"));
-      querySnapshot.forEach((doc) => {
-        const article = doc.data();
-        const container = document.getElementById("articles");
-        const div = document.createElement("div");
-        div.innerHTML = `<h2>${article.titre}</h2><p>${article.contenu}</p>`;
-        container.appendChild(div);
-      });
-    }
-
-    fetchArticles();
-  </script>
+    <h1>ISMAILI RACHID–∆FEU–Ψ–UN</h1>
+    <p>Bienvenue sur le portail RAUN 🔐</p>
 </body>
 </html>
