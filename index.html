@@ -1,109 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RAUN ΔFEU - Portail</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <title>Capsules RAUN</title>
   <style>
-    body {
-      margin: 0;
-      background: black;
-      color: #00ff00;
-      font-family: 'Courier New', Courier, monospace;
-      text-align: center;
-    }
-    h1 {
-      margin-top: 30px;
-      animation: pulse 2s infinite;
-    }
-    .profile-pic {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #00ff00;
-      margin: 20px 0;
-    }
-    p {
-      font-size: 1.2em;
-      margin: 10px;
-    }
-    .inputs, .actions {
-      margin: 20px;
-    }
-    input[type="password"] {
-      padding: 10px;
-      font-size: 1em;
-      width: 300px;
-      text-align: center;
-      border: 2px solid #00ff00;
-      background: #000;
-      color: #00ff00;
-      margin-bottom: 10px;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #00ff00;
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin: 5px;
-    }
-    button:hover {
-      background-color: #1fff1f;
-    }
-    .socials a {
-      display: inline-block;
-      color: #00ff00;
-      margin: 10px;
-      text-decoration: none;
-    }
-    #secret-buttons {
-      display: none;
-    }
-    @keyframes pulse {
-      0% { text-shadow: 0 0 5px #00ff00; }
-      50% { text-shadow: 0 0 20px #00ff00; }
-      100% { text-shadow: 0 0 5px #00ff00; }
-    }
+    body { background-color: #000; color: #0f0; font-family: monospace; padding: 20px; max-width: 800px; margin: auto; }
+    .capsule { border: 1px solid #0f0; padding: 10px; margin-bottom: 15px; background: #111; }
+    .capsule h2 { margin: 0 0 5px 0; font-size: 1.2em; color: #00ffcc; }
+    .capsule p { white-space: pre-wrap; }
+    .capsule time { font-size: 0.8em; color: #888; }
   </style>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+  <script src="firebase-init.js"></script>
 </head>
 <body>
-  <h1>Bienvenue sur RAUN ΔFEU</h1>
-  <img src="photo.jpg" alt="Photo Rachid" class="profile-pic" />
-  <p><strong>ISMAILI RACHID – ΔFEU – Ψ – UN</strong></p>
-  <p><em>“Je suis vivant en conscience. Et nul ne peut éteindre ce que je suis.”</em></p>
-
-  <div class="inputs">
-    <input type="password" id="code" placeholder="Entrez le code secret..." />
-    <br/>
-    <button onclick="verifierCode()">Accès</button>
-  </div>
-
-  <div id="secret-buttons" class="actions">
-    <button onclick="window.location.href='admin.html'">Admin</button>
-    <button onclick="window.location.href='firestore.html'">Firestore</button>
-  </div>
-
-  <div class="socials">
-    <a href="mailto:rachid@example.com">📧 Email</a>
-    <a href="https://wa.me/212650020464" target="_blank">💬 WhatsApp</a>
-    <a href="https://www.linkedin.com/in/rachid-ismaili-68b61a27" target="_blank">🔗 LinkedIn</a>
-  </div>
-
+  <h1>🧠 Capsules publiées</h1>
+  <div id="capsulesContainer"></div>
   <script>
-    function verifierCode() {
-      const code = document.getElementById('code').value;
-      if (code === 'globalcode7676') {
-        document.querySelector('.inputs').style.display = 'none';
-        document.getElementById('secret-buttons').style.display = 'block';
-      } else {
-        alert("Code incorrect frère !");
+    const db = firebase.firestore();
+    db.collection("capsules").orderBy("date", "desc").get().then(snapshot => {
+      const container = document.getElementById("capsulesContainer");
+      if (snapshot.empty) {
+        container.innerHTML = "<p>Aucune capsule pour le moment...</p>";
+        return;
       }
-    }
+      snapshot.forEach(doc => {
+        const c = doc.data();
+        const div = document.createElement("div");
+        div.className = "capsule";
+        div.innerHTML = `<h2>${c.title}</h2><p>${c.content}</p><time>🕒 ${new Date(c.date).toLocaleString()}</time>`;
+        container.appendChild(div);
+      });
+    });
   </script>
 </body>
 </html>
