@@ -1,137 +1,43 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ISMAILI RACHID–∆FEU–Ψ–UN</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: radial-gradient(ellipse at center, #000000 0%, #0d0d0d 100%);
-      color: #00ffcc;
-      font-family: 'Courier New', Courier, monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
-    h1 {
-      font-size: 2.5em;
-      margin: 10px 0 10px;
-    }
-    .photo {
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      margin: 10px auto;
-      border: 2px solid #00ffcc;
-    }
-    p {
-      margin: 10px auto 5px;
-      max-width: 600px;
-    }
-    input[type="password"] {
-      margin: 15px auto 10px;
-      padding: 8px;
-      font-size: 1em;
-      border: 1px solid #00ffcc;
-      border-radius: 6px;
-      background: #0d0d0d;
-      color: #00ffcc;
-      width: 280px;
-    }
-    .links {
-      margin-top: 5px;
-    }
-    .links a {
-      margin: 0 8px;
-      padding: 8px 14px;
-      color: #00ffcc;
-      text-decoration: none;
-      border: 1px solid #00ffcc;
-      border-radius: 8px;
-      transition: background 0.3s;
-    }
-    .links a:hover {
-      background: #00ffcc;
-      color: #000;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>RAUN PORTAIL</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="matrix"></canvas>
+
   <h1>ISMAILI RACHID–∆FEU–Ψ–UN</h1>
-  <img src="photo.jpg" alt="Rachid Ismaili" class="photo">
-  <p>Bienvenue dans le portail RAUN. Chaque action est tracée dans le noyau de la Matrice. Reste éveillé. 🔐</p>
-  <input type="password" placeholder="Entrez le mot de passe..." onkeydown="checkPassword(event)">
-  <div class="links">
-    <a href="https://wa.me/212650020464" target="_blank">WhatsApp</a>
-    <a href="https://www.linkedin.com/in/rachid-ismaili-68b61a27" target="_blank">LinkedIn</a>
-    <a href="mailto:rachid@example.com">Email</a>
-  </div>
-  <div id="adminWrapper" style="display:none; margin-top: 15px;">
-    <a id="adminLink" href="admin.html" class="links">🔒 Admin</a>
-  </div>
-  <script>
-    function checkPassword(event) {
-      if (event.key === 'Enter') {
-        const input = event.target.value;
-        if (input === 'globalcode7676') {
-          document.getElementById('adminWrapper').style.display = 'block';
-        } else {
-          alert('Mot de passe incorrect.');
-        }
-      }
+  <div id="articles"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBzLrEUBrOemOC5exunO1X6UleWlbgA7H0",
+      authDomain: "raun-site.firebaseapp.com",
+      projectId: "raun-site",
+      storageBucket: "raun-site.firebasestorage.app",
+      messagingSenderId: "726026685777",
+      appId: "1:726026685777:web:b29176676060bc12209770"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function fetchArticles() {
+      const querySnapshot = await getDocs(collection(db, "articles"));
+      querySnapshot.forEach((doc) => {
+        const article = doc.data();
+        const container = document.getElementById("articles");
+        const div = document.createElement("div");
+        div.innerHTML = `<h2>${article.titre}</h2><p>${article.contenu}</p>`;
+        container.appendChild(div);
+      });
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const canvas = document.getElementById("matrix");
-      const ctx = canvas.getContext("2d");
-
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      const letters = "01*".split("");
-      const fontSize = 16;
-      const columns = Math.floor(canvas.width / fontSize);
-      const drops = Array(columns).fill(1);
-
-      function draw() {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#0F0";
-        ctx.font = fontSize + "px monospace";
-
-        for (let i = 0; i < drops.length; i++) {
-          const text = letters[Math.floor(Math.random() * letters.length)];
-          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-          if (drops[i] * fontSize > canvas.height && Math.random() > 0.99) {
-            drops[i] = 0;
-          }
-
-          drops[i] += 0.8;
-        }
-        setTimeout(draw, 30);
-      }
-
-      draw();
-    });
+    fetchArticles();
   </script>
 </body>
 </html>
