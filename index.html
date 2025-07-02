@@ -3,56 +3,96 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>RAUN 🔐 Accès sécurisé</title>
+  <title>RAUN - Accès sécurisé</title>
   <style>
     body {
-      background-color: #000;
-      color: #0f0;
+      background: black;
+      color: lime;
       font-family: monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 100px;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .container {
+      position: relative;
+      margin-top: 100px;
+    }
+    .photo {
+      width: 100px;
+      border-radius: 50%;
+      margin-bottom: 20px;
     }
     input, button {
-      margin: 5px;
       padding: 10px;
-      font-family: monospace;
-      font-size: 16px;
       background: #111;
-      color: #0f0;
-      border: 1px solid #0f0;
+      color: lime;
+      border: 1px solid lime;
+      font-family: monospace;
+      margin: 10px;
     }
-    #protected {
-      display: none;
-      margin-top: 50px;
+    .links a {
+      color: cyan;
+      text-decoration: none;
+      margin: 0 10px;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
-  <h1>🧠 RAUN - Accès sécurisé</h1>
-  <input type="password" id="password" placeholder="Mot de passe">
-  <button onclick="checkPassword()">Entrer</button>
-
-  <div id="protected">
-    <p>🔥 Bienvenue dans l’espace RAUN privé.</p>
-    <p>Connexion Firebase en cours...</p>
+  <canvas id="matrix"></canvas>
+  <div class="container">
+    <img src="photo.jpg" alt="Photo" class="photo">
+    <h1>🧠 RAUN - Accès sécurisé</h1>
+    <input type="password" id="password" placeholder="Mot de passe">
+    <br>
+    <button onclick="checkPassword()">Entrer</button>
+    <div class="links">
+      <a href="https://wa.me/212600000000">WhatsApp</a>
+      <a href="https://linkedin.com/in/rachid-ismaili">LinkedIn</a>
+      <a href="mailto:rachid@example.com">Email</a>
+    </div>
   </div>
-
-  <!-- Firebase CDN -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-  <script src="firebaseConfig.js"></script>
-
   <script>
     function checkPassword() {
-      const pass = document.getElementById("password").value;
-      if (pass === "raun2025") {
-        document.getElementById("protected").style.display = "block";
+      const pass = document.getElementById('password').value;
+      if (pass === 'raun2025') {
+        window.location.href = 'capsules.html';
       } else {
-        alert("⛔ Mot de passe incorrect");
+        alert('Mot de passe incorrect');
       }
     }
+
+    // Matrix effect
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
+    const font_size = 10;
+    const columns = canvas.width / font_size;
+    const drops = [];
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#0F0";
+      ctx.font = font_size + "px monospace";
+      for (let i = 0; i < drops.length; i++) {
+        const text = matrix[Math.floor(Math.random() * matrix.length)];
+        ctx.fillText(text, i * font_size, drops[i] * font_size);
+        if (drops[i] * font_size > canvas.height && Math.random() > 0.975)
+          drops[i] = 0;
+        drops[i]++;
+      }
+    }
+    setInterval(draw, 33);
   </script>
 </body>
 </html>
