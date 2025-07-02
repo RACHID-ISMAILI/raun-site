@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>RAUN - Accès sécurisé</title>
-  <style>
+<meta charset="utf-8"/>
+<title>RAUN - Accès sécurisé</title>
+<style>
     body {
       background: black;
       color: lime;
@@ -46,20 +47,20 @@
   </style>
 </head>
 <body>
-  <canvas id="matrix"></canvas>
-  <div class="container">
-    <img src="photo.jpg" alt="Photo" class="photo">
-    <h1>🧠 RAUN - Accès sécurisé</h1>
-    <input type="password" id="password" placeholder="Mot de passe">
-    <br>
-    <button onclick="checkPassword()">Entrer</button>
-    <div class="links">
-      <a href="https://wa.me/212600000000">WhatsApp</a>
-      <a href="https://linkedin.com/in/rachid-ismaili">LinkedIn</a>
-      <a href="mailto:rachid@example.com">Email</a>
-    </div>
-  </div>
-  <script>
+<canvas id="matrix"></canvas>
+<div class="container">
+<p style="text-align:center; color:#00ffff; font-size:0.9em; margin-top:5px;">WhatsApp: 0650020464    |    LinkedIn: www.linkedin.com/in/rachid-ismaili-68b61a27</p><h2 style="text-align:center; color:#00ff00; font-size: 1.4em; margin-top:20px;">ISMAILI RACHID–∆FEU–Ψ–UN</h2><img alt="Photo" class="photo" src="photo.jpg"/>
+<h1>🧠 RAUN - Accès sécurisé</h1>
+<input id="password" placeholder="Mot de passe" type="password"/>
+<br/>
+<button onclick="checkPassword()">Entrer</button>
+<div class="links">
+<a href="https://wa.me/212600000000">WhatsApp</a>
+<a href="https://linkedin.com/in/rachid-ismaili">LinkedIn</a>
+<a href="mailto:rachid@example.com">Email</a>
+</div>
+</div>
+<script>
     function checkPassword() {
       const pass = document.getElementById('password').value;
       if (pass === 'raun2025') {
