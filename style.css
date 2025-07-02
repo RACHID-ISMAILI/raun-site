@@ -1,9 +1,33 @@
+
 body {
   background-color: black;
   color: limegreen;
-  font-family: 'Courier New', Courier, monospace;
-  padding: 20px;
+  font-family: monospace;
+  text-align: center;
+  padding: 50px;
 }
 h1 {
-  text-align: center;
+  font-size: 2em;
+}
+.password-box input {
+  padding: 10px;
+  width: 300px;
+  margin: 20px auto;
+  display: block;
+  font-size: 1em;
+}
+.button-container {
+  margin-top: 20px;
+}
+.btn {
+  background-color: transparent;
+  color: limegreen;
+  border: 2px solid limegreen;
+  padding: 10px 20px;
+  margin: 5px;
+  text-decoration: none;
+  display: inline-block;
+}
+.admin {
+  margin-top: 20px;
 }
