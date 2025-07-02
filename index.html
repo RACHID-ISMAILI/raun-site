@@ -3,42 +3,57 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>RAUN AR + Capsule Vidéo</title>
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+  <title>RAUN - Accès sécurisé</title>
   <style>
     body {
-      background: black;
-      color: #0f0;
+      background-color: black;
+      color: lime;
       font-family: monospace;
       text-align: center;
+      padding-top: 30px;
     }
-    .video-container {
-      margin-top: 20px;
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 10px auto;
+      display: block;
     }
-    video {
-      width: 90%;
-      border: 2px solid #0f0;
-      border-radius: 10px;
+    input[type="password"] {
+      padding: 10px;
+      border: 1px solid lime;
+      background-color: #111;
+      color: lime;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      color: lime;
+      background-color: black;
+      border: 1px solid lime;
+      cursor: pointer;
+    }
+    a {
+      color: cyan;
+      margin: 0 10px;
+      font-size: 16px;
+      text-decoration: none;
     }
   </style>
 </head>
-<body>
-  <h1>ISMAILI RACHID–∆FEU–Ψ–UN</h1>
-
-  <a-scene embedded arjs>
-    <a-marker preset="custom" type="pattern" url="media/ar-marker.patt">
-      <a-image src="media/photo.jpg" position='0 0 0' height='1' width='1'></a-image>
-    </a-marker>
-    <a-entity camera></a-entity>
-  </a-scene>
-
-  <div class="video-container">
-    <h2>🎥 Capsule RAUN</h2>
-    <video controls autoplay muted loop>
-      <source src="media/capsule.mp4" type="video/mp4" />
-      Votre navigateur ne supporte pas la lecture vidéo.
-    </video>
-  </div>
+<body background="matrix.gif">
+  <h2>ISMAILI RACHID–∆FEU–Ψ–UN</h2>
+  <img src="photo.jpg" alt="Photo de Rachid Ismaili" />
+  <h1>🧠 RAUN - Accès sécurisé</h1>
+  <form>
+    <input type="password" placeholder="Mot de passe" /><br>
+    <button>Entrer</button>
+  </form>
+  <br>
+  <a href="https://wa.me/212650020464" target="_blank">WhatsApp</a>
+  <a href="https://www.linkedin.com/in/rachid-ismaili-68b61a27" target="_blank">LinkedIn</a>
+  <a href="mailto:rachid.ismaili@gmail.com">Email</a>
 </body>
 </html>
