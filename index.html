@@ -3,72 +3,87 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>RAUN - Accès Sécurisé</title>
+  <title>RAUN - Accès sécurisé</title>
   <style>
     body {
-      background-color: black;
-      color: #00FF00;
+      background: black;
+      color: #0f0;
       font-family: monospace;
       text-align: center;
-      background-image: url("matrix.gif");
-      background-size: cover;
-      background-repeat: no-repeat;
+      padding-top: 100px;
     }
-    img.profile {
-      width: 150px;
-      height: 150px;
+    #matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: black;
+    }
+    img {
       border-radius: 50%;
+      width: 200px;
+      height: 200px;
+    }
+    input, button {
       margin-top: 20px;
-    }
-    .title {
-      font-size: 24px;
-      margin: 20px 0 10px;
-    }
-    input[type="password"] {
       padding: 10px;
-      background-color: #111;
-      color: #00FF00;
-      border: 1px solid #00FF00;
-      margin-bottom: 10px;
-      font-size: 18px;
+      background: #111;
+      border: 1px solid #0f0;
+      color: #0f0;
+      font-family: monospace;
     }
-    button {
-      padding: 10px 20px;
-      font-size: 18px;
-      background-color: black;
-      color: #00FF00;
-      border: 1px solid #00FF00;
-      cursor: pointer;
-    }
-    .links a {
-      color: cyan;
-      margin: 0 15px;
-      text-decoration: none;
+    a {
+      color: #0ff;
+      margin: 10px;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
-  <div class="title">ISMAILI RACHID–∆FEU–Ψ–UN</div>
-  <img src="photo.jpg" alt="Photo" class="profile">
+  <canvas id="matrix"></canvas>
+  <h2>ISMAILI RACHID–∆FEU–Ψ–UN</h2>
+  <img src="photo.jpg" alt="Photo de Rachid Ismaili" />
   <h1>🧠 RAUN - Accès sécurisé</h1>
-  <input type="password" id="password" placeholder="Mot de passe"><br>
-  <button onclick="checkPassword()">Entrer</button>
-  <div class="links">
+  <input type="password" placeholder="Mot de passe" />
+  <br>
+  <button>Entrer</button>
+  <div>
     <a href="https://wa.me/212650020464" target="_blank">WhatsApp</a>
     <a href="https://www.linkedin.com/in/rachid-ismaili-68b61a27" target="_blank">LinkedIn</a>
-    <a href="mailto:contact@raun.com">Email</a>
+    <a href="mailto:example@email.com">Email</a>
   </div>
 
   <script>
-    function checkPassword() {
-      const correctPassword = "globalcode7676";
-      const input = document.getElementById("password").value;
-      if (input === correctPassword) {
-        window.location.href = "RAUN_PORTAL.html";
-      } else {
-        alert("Mot de passe incorrect !");
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "アァイィウヴエカガキギクグケゲコゴサザシジスズセゼソゾタダチッヂヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモヤユヨラリルレロワン".split("");
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    for (let i = 0; i < columns; i++) drops[i] = 1;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#0F0";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
       }
     }
+
+    setInterval(draw, 33);
   </script>
 </body>
 </html>
