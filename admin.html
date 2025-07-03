@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Capsule Admin</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+<head><meta charset="UTF-8"><title>Admin RAUN</title></head>
 <body>
-  <h1>🚀 Capsule Admin</h1>
-  <input type="text" id="title" placeholder="Titre de la capsule" />
-  <textarea id="content" placeholder="Contenu de la capsule..."></textarea>
+  <h1>Capsule Admin RAUN 🔐</h1>
+  <input id="title" placeholder="Titre" /><br>
+  <textarea id="content" placeholder="Contenu"></textarea><br>
   <button onclick="publish()">Publier</button>
-  <a href="portal.html" class="return-link">← Retour au Portail</a>
-  <canvas id="matrix"></canvas>
-  <script src="matrix.js"></script>
-  <script src="capsule.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="firebaseConfig.js"></script>
+  <script>
+    const db = firebase.firestore();
+    function publish() {
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+      if (!title || !content) return alert("Champs vides !");
+      db.collection('capsules').add({ title, content, date: Date.now() })
+        .then(() => alert('Capsule enregistrée 🔥'))
+        .catch(e => alert('Erreur : ' + e));
+    }
+  </script>
 </body>
 </html>
