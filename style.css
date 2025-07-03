@@ -1,33 +1,47 @@
 
 body {
   background-color: black;
-  color: limegreen;
+  color: lime;
   font-family: monospace;
   text-align: center;
-  padding: 50px;
+  padding: 20px;
 }
-h1 {
-  font-size: 2em;
+.icon {
+  height: 30px;
+  vertical-align: middle;
 }
-.password-box input {
-  padding: 10px;
-  width: 300px;
-  margin: 20px auto;
+.profile-img {
+  width: 150px;
+  border-radius: 50%;
+}
+.socials a {
+  margin: 0 10px;
+  color: cyan;
+}
+.secret-link, .return-link {
   display: block;
-  font-size: 1em;
-}
-.button-container {
-  margin-top: 20px;
-}
-.btn {
-  background-color: transparent;
-  color: limegreen;
-  border: 2px solid limegreen;
-  padding: 10px 20px;
-  margin: 5px;
+  margin-top: 30px;
+  color: orange;
   text-decoration: none;
-  display: inline-block;
 }
-.admin {
-  margin-top: 20px;
+input, textarea {
+  width: 80%;
+  margin: 10px 0;
+  background: #111;
+  border: 1px solid lime;
+  color: lime;
+  padding: 10px;
+}
+button {
+  padding: 10px 20px;
+  background: black;
+  color: lime;
+  border: 1px solid lime;
+  cursor: pointer;
+}
+canvas#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }

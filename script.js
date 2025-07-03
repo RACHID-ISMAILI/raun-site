@@ -1,11 +1,9 @@
 
-document.getElementById('passwordInput').addEventListener('keyup', function (e) {
-  if (e.key === 'Enter') {
-    const val = e.target.value;
-    if (val === 'globalcode7676') {
-      document.getElementById('adminPanel').style.display = 'block';
-    } else {
-      alert('Mot de passe incorrect');
-    }
+function checkPassword() {
+  const pass = document.getElementById('password').value;
+  if (pass === "globalcode7676") {
+    window.location.href = "portal.html";
+  } else {
+    alert("Mot de passe incorrect");
   }
-});
+}

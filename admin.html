@@ -2,31 +2,16 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Admin RAUN</title>
-  <style>
-    body { background: #000; color: #0f0; font-family: monospace; padding: 20px; max-width: 600px; margin: auto; }
-    input, textarea, button { display: block; width: 100%; margin-bottom: 10px; background: #111; color: #0f0; border: 1px solid #0f0; padding: 10px; }
-    button { cursor: pointer; }
-  </style>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-  <script src="firebase-init.js"></script>
+  <title>Capsule Admin</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>🚀 Capsule Admin</h1>
-  <input id="title" placeholder="Titre de la capsule" />
-  <textarea id="content" rows="6" placeholder="Contenu de la capsule..."></textarea>
-  <button onclick="publish()">Publier</button>
-  <script>
-    const db = firebase.firestore();
-    function publish() {
-      const title = document.getElementById("title").value;
-      const content = document.getElementById("content").value;
-      if (!title || !content) return alert("Champs manquants !");
-      db.collection("capsules").add({ title, content, date: Date.now() })
-        .then(() => alert("Capsule publiée ✅"))
-        .catch(err => alert("Erreur : " + err));
-    }
-  </script>
+  <input type="text" placeholder="Titre de la capsule" />
+  <textarea placeholder="Contenu de la capsule..."></textarea>
+  <button>Publier</button>
+  <a href="index.html" class="return-link">← Retour à l’accueil</a>
+  <canvas id="matrix"></canvas>
+  <script src="matrix.js"></script>
 </body>
 </html>

@@ -1,89 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>RAUN - Accès sécurisé</title>
-  <style>
-    body {
-      background: black;
-      color: #0f0;
-      font-family: monospace;
-      text-align: center;
-      padding-top: 100px;
-    }
-    #matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      background: black;
-    }
-    img {
-      border-radius: 50%;
-      width: 200px;
-      height: 200px;
-    }
-    input, button {
-      margin-top: 20px;
-      padding: 10px;
-      background: #111;
-      border: 1px solid #0f0;
-      color: #0f0;
-      font-family: monospace;
-    }
-    a {
-      color: #0ff;
-      margin: 10px;
-      display: inline-block;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="matrix"></canvas>
-  <h2>ISMAILI RACHID–∆FEU–Ψ–UN</h2>
-  <img src="photo.jpg" alt="Photo de Rachid Ismaili" />
-  <h1>🧠 RAUN - Accès sécurisé</h1>
-  <input type="password" placeholder="Mot de passe" />
-  <br>
-  <button>Entrer</button>
-  <div>
+  <div class="header">ISMAILI RACHID–∆FEU–Ψ–UN</div>
+  <img src="photo.jpg" alt="Photo" class="profile-img" />
+  <h1><img src="brain.png" alt="Brain" class="icon" /> RAUN - Accès sécurisé</h1>
+  <input type="password" id="password" placeholder="Mot de passe" />
+  <button onclick="checkPassword()">Entrer</button>
+  <div class="socials">
     <a href="https://wa.me/212650020464" target="_blank">WhatsApp</a>
     <a href="https://www.linkedin.com/in/rachid-ismaili-68b61a27" target="_blank">LinkedIn</a>
-    <a href="mailto:example@email.com">Email</a>
+    <a href="mailto:rachid@example.com">Email</a>
   </div>
-
-  <script>
-    const canvas = document.getElementById("matrix");
-    const ctx = canvas.getContext("2d");
-
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const letters = "アァイィウヴエカガキギクグケゲコゴサザシジスズセゼソゾタダチッヂヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモヤユヨラリルレロワン".split("");
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = [];
-
-    for (let i = 0; i < columns; i++) drops[i] = 1;
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#0F0";
-      ctx.font = fontSize + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw, 33);
-  </script>
+  <script src="script.js"></script>
+  <canvas id="matrix"></canvas>
+  <script src="matrix.js"></script>
 </body>
 </html>
