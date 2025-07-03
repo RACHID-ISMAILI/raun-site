@@ -7,7 +7,16 @@
 </head>
 <body>
   <h1>Bienvenue dans le Portail RAUN 🔓</h1>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+
+  <video id="introVideo" width="560" autoplay muted playsinline style="border:2px solid lime; border-radius:10px;">
+    <source src="media/raun_intro.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo.
+  </video>
+  <script>
+    const vid = document.getElementById('introVideo');
+    setTimeout(() => { vid.pause(); }, 15000);
+  </script>
+
   <a href="index.html" class="return-link">← Retour à l’accueil</a>
   <div id="secretZone" onclick="window.location.href='admin.html';"></div>
   <canvas id="matrix"></canvas>
