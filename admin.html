@@ -7,11 +7,12 @@
 </head>
 <body>
   <h1>🚀 Capsule Admin</h1>
-  <input type="text" placeholder="Titre de la capsule" />
-  <textarea placeholder="Contenu de la capsule..."></textarea>
-  <button>Publier</button>
-  <a href="index.html" class="return-link">← Retour à l’accueil</a>
+  <input type="text" id="title" placeholder="Titre de la capsule" />
+  <textarea id="content" placeholder="Contenu de la capsule..."></textarea>
+  <button onclick="publish()">Publier</button>
+  <a href="portal.html" class="return-link">← Retour au Portail</a>
   <canvas id="matrix"></canvas>
   <script src="matrix.js"></script>
+  <script src="capsule.js"></script>
 </body>
 </html>

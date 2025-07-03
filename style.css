@@ -6,23 +6,15 @@ body {
   text-align: center;
   padding: 20px;
 }
-.icon {
-  height: 30px;
-  vertical-align: middle;
+canvas#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
-.profile-img {
+img.profile-img {
   width: 150px;
   border-radius: 50%;
-}
-.socials a {
-  margin: 0 10px;
-  color: cyan;
-}
-.secret-link, .return-link {
-  display: block;
-  margin-top: 30px;
-  color: orange;
-  text-decoration: none;
 }
 input, textarea {
   width: 80%;
@@ -39,9 +31,17 @@ button {
   border: 1px solid lime;
   cursor: pointer;
 }
-canvas#matrix {
+.secret-link, .return-link {
+  display: block;
+  margin-top: 30px;
+  color: orange;
+  text-decoration: none;
+}
+#secretZone {
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }

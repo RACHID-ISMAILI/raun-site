@@ -1,61 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <title>Capsules RAUN</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #0f0;
-      font-family: monospace;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .capsule {
-      border: 1px solid #0f0;
-      padding: 10px;
-      margin-bottom: 15px;
-      background: #111;
-    }
-    .capsule h2 {
-      margin: 0 0 5px 0;
-      font-size: 1.2em;
-      color: #00ffcc;
-    }
-    .capsule p {
-      white-space: pre-wrap;
-    }
-    .capsule time {
-      font-size: 0.8em;
-      color: #888;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>🧠 Capsules publiées</h1>
   <div id="capsulesContainer"></div>
+  <a href="index.html" class="return-link">← Retour à l’accueil</a>
+  <div id="secretZone" onclick="window.location.href='admin.html';"></div>
+  <canvas id="matrix"></canvas>
+  <script src="matrix.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const container = document.getElementById("capsulesContainer");
-      const capsules = JSON.parse(localStorage.getItem("capsules") || "[]");
+    const container = document.getElementById("capsulesContainer");
+    const capsules = JSON.parse(localStorage.getItem("capsules") || "[]");
 
-      if (capsules.length === 0) {
-        container.innerHTML = "<p>Aucune capsule pour le moment...</p>";
-        return;
-      }
+    if (capsules.length === 0) {
+      container.innerHTML = "<p>Aucune capsule pour le moment...</p>";
+    }
 
-      capsules.forEach(capsule => {
-        const div = document.createElement("div");
-        div.className = "capsule";
-        div.innerHTML = `
-          <h2>${capsule.title}</h2>
-          <p>${capsule.content}</p>
-          <time>🕒 ${new Date(capsule.date).toLocaleString()}</time>
-        `;
-        container.appendChild(div);
-      });
+    capsules.forEach(capsule => {
+      const div = document.createElement("div");
+      div.className = "capsule";
+      div.innerHTML = `<h2>${capsule.title}</h2><p>${capsule.content}</p><time>🕒 ${new Date(capsule.date).toLocaleString()}</time>`;
+      container.appendChild(div);
     });
   </script>
 </body>
