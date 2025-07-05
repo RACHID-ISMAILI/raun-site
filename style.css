@@ -1,47 +1,26 @@
 
 body {
   background-color: black;
-  color: lime;
+  color: #0f0;
   font-family: monospace;
-  text-align: center;
-  padding: 20px;
 }
-canvas#matrix {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
+.link-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
-img.profile-img {
-  width: 150px;
-  border-radius: 50%;
-}
-input, textarea {
-  width: 80%;
-  margin: 10px 0;
-  background: #111;
-  border: 1px solid lime;
-  color: lime;
-  padding: 10px;
-}
-button {
+.link-buttons .btn,
+.return-btn {
   padding: 10px 20px;
-  background: black;
-  color: lime;
-  border: 1px solid lime;
-  cursor: pointer;
-}
-.secret-link, .return-link {
-  display: block;
-  margin-top: 30px;
-  color: orange;
+  background: transparent;
+  color: #0f0;
+  border: 2px solid #0f0;
   text-decoration: none;
+  font-family: monospace;
+  transition: background 0.3s;
 }
-#secretZone {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
+.link-buttons .btn:hover,
+.return-btn:hover {
+  background: rgba(0,255,0,0.1);
 }

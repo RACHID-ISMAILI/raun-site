@@ -1,25 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Portail RAUN</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>RAUN - Accès sécurisé</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Bienvenue dans le Portail RAUN 🔓</h1>
-
-  <video id="introVideo" width="560" autoplay muted playsinline style="border:2px solid lime; border-radius:10px;">
-    <source src="media/raun_intro.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la vidéo.
-  </video>
-  <script>
-    const vid = document.getElementById('introVideo');
-    setTimeout(() => { vid.pause(); }, 15000);
-  </script>
-
-  <a href="index.html" class="return-link">← Retour à l’accueil</a>
-  <div id="secretZone" onclick="window.location.href='admin.html';"></div>
-  <canvas id="matrix"></canvas>
-  <script src="matrix.js"></script>
+  <h1>RAUN - Accès sécurisé</h1>
+  <input type="password" placeholder="Mot de passe">
+  <button>Entrer</button>
+  <div class="link-buttons">
+    <a href="admin.html" class="btn admin-btn">Accès Admin 🔐</a>
+    <a href="capsules.html" class="btn capsules-btn">Lire les capsules 📖</a>
+  </div>
 </body>
 </html>

@@ -1,27 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="fr">
-<head><meta charset="UTF-8"><title>Capsules RAUN</title></head>
+<head>
+  <meta charset="UTF-8">
+  <title>Capsules RAUN</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-  <h1>🧠 Capsules publiées</h1>
-  <div id="capsulesContainer"></div>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-  <script src="firebaseConfig.js"></script>
-  <script>
-    const db = firebase.firestore();
-    const container = document.getElementById("capsulesContainer");
-    db.collection('capsules').orderBy('date','desc').get()
-      .then(snapshot => {
-        if (snapshot.empty) return container.innerHTML = "<p>Aucune capsule pour le moment...</p>";
-        snapshot.forEach(doc => {
-          const c = doc.data();
-          const div = document.createElement("div");
-          div.className = "capsule";
-          div.innerHTML = `<h2>${c.title}</h2><p>${c.content}</p><time>🕒 ${new Date(c.date).toLocaleString()}</time>`;
-          container.appendChild(div);
-        });
-      })
-      .catch(e => container.innerHTML = "<p>Erreur de chargement</p>");
-  </script>
+  <a href="portal.html" class="btn return-btn">← Retour au Portail</a>
+  <h1>Capsule Admin RAUN 🔐</h1>
+  <input placeholder="Titre">
+  <textarea placeholder="Contenu"></textarea>
+  <button>Publier</button>
 </body>
 </html>
