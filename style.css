@@ -4,23 +4,65 @@ body {
   color: #0f0;
   font-family: monospace;
 }
-.link-buttons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+
+.capsules-wrapper {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
 }
-.link-buttons .btn,
+
+.capsules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.capsule {
+  background: rgba(0, 255, 0, 0.05);
+  border: 1px solid #0f0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,255,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+.capsule:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0,255,0,0.4);
+}
+
+.capsule h2 {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+.capsule p {
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+.capsule time {
+  display: block;
+  margin-top: 10px;
+  color: #afa;
+  font-size: 0.8em;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .return-btn {
-  padding: 10px 20px;
-  background: transparent;
+  display: inline-block;
+  margin: 20px;
+  padding: 8px 16px;
   color: #0f0;
-  border: 2px solid #0f0;
+  border: 1px solid #0f0;
   text-decoration: none;
-  font-family: monospace;
-  transition: background 0.3s;
 }
-.link-buttons .btn:hover,
 .return-btn:hover {
   background: rgba(0,255,0,0.1);
 }

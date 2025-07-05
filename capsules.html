@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,10 +6,36 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a href="portal.html" class="btn return-btn">← Retour au Portail</a>
-  <h1>Capsule Admin RAUN 🔐</h1>
-  <input placeholder="Titre">
-  <textarea placeholder="Contenu"></textarea>
-  <button>Publier</button>
+  <header>
+    <a href="portal.html" class="btn return-btn">← Retour au Portail</a>
+  </header>
+  <main class="capsules-wrapper">
+    <h1>🧠 Capsules RAUN</h1>
+    <div id="capsulesContainer" class="capsules-grid"></div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="firebaseConfig.js"></script>
+  <script>
+    const db = firebase.firestore();
+    const container = document.getElementById("capsulesContainer");
+
+    db.collection('capsules').orderBy('date','desc').get()
+      .then(snapshot => {
+        if (snapshot.empty) return container.innerHTML = "<p>Aucune capsule pour le moment...</p>";
+        let index = 0;
+        snapshot.forEach(doc => {
+          const c = doc.data();
+          const div = document.createElement("div");
+          div.className = "capsule";
+          div.style.animationDelay = `${0.1 * index}s`;
+          div.innerHTML = `<h2>${c.title}</h2><p>${c.content}</p><time>🕒 ${new Date(c.date).toLocaleString()}</time>`;
+          container.appendChild(div);
+          index++;
+        });
+      })
+      .catch(e => container.innerHTML = "<p>Erreur de chargement</p>");
+  </script>
 </body>
 </html>
